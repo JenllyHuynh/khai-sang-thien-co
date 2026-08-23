@@ -1,23 +1,3 @@
-"""
-Lão Tặc AI - Kẻ Học Vẹt (Overfitted Prophet).
-
-Chân ngôn: "AI tưởng mình thông thiên, nhưng trước Random chỉ là một
-thằng học vẹt."
-
-Hai "đạo sĩ" AI được huấn luyện để đối chứng nhau:
-
-- **Lão Tặc AI (overfit)** — cây quyết định KHÔNG giới hạn độ sâu,
-  ĐƯỢC CHO XEM `draw_index` và `number` (định danh của từng dòng dữ liệu).
-  Vì cặp này là định danh duy nhất chứ không phải tín hiệu dự đoán thật,
-  cây có thể "học thuộc lòng" toàn bộ đáp án lịch sử — tự tin gần như
-  tuyệt đối trên dữ liệu đã học, nhưng sụp đổ khi gặp lần quay MỚI (có
-  `draw_index` chưa từng thấy).
-- **Đạo Sĩ Khiêm Tốn (baseline)** — cây quyết định bị giới hạn độ sâu,
-  KHÔNG được xem `draw_index`/`number`, chỉ có tần suất/khoảng cách xuất
-  hiện gần đây. Vì không có "định danh" để học thuộc, nó honest ngay từ
-  đầu: hiệu năng trên dữ liệu đã học và tương lai xấp xỉ nhau (và xấp xỉ
-  mức đoán mò), vì bản thân dữ liệu không hề có quy luật thật để học.
-"""
 from dataclasses import dataclass
 
 import numpy as np
@@ -31,36 +11,25 @@ FEATURES_OVERFIT = ["draw_index", "number", "freq_last_window", "overall_freq", 
 # Đạo Sĩ Khiêm Tốn chỉ có đặc trưng thống kê thuần túy, không có định danh
 FEATURES_BASELINE = ["freq_last_window", "overall_freq", "gap_since_last"]
 
-
 @dataclass
 class TrainedModel:
     name: str
     model: DecisionTreeClassifier
     feature_cols: list
 
-
+# Huấn luyện 'Lão Tặc AI' - cố tình để nó overfit/học vẹt
 def train_lao_tac_ai(df_train: pd.DataFrame) -> TrainedModel:
-    """Huấn luyện 'Lão Tặc AI' — cố tình để nó overfit/học vẹt."""
     model = DecisionTreeClassifier(max_depth=None, min_samples_leaf=1, random_state=42)
     model.fit(df_train[FEATURES_OVERFIT], df_train["label"])
     return TrainedModel(name="Lão Tặc AI (Học Vẹt)", model=model, feature_cols=FEATURES_OVERFIT)
 
-
+#  Huấn luyện 'Đạo Sĩ Khiêm Tốn' - model được kiểm soát overfitting đàng hoàng
 def train_dao_si_khiem_ton(df_train: pd.DataFrame) -> TrainedModel:
-    """Huấn luyện 'Đạo Sĩ Khiêm Tốn' — model được kiểm soát overfitting đàng hoàng."""
     model = DecisionTreeClassifier(max_depth=3, min_samples_leaf=50, random_state=42)
     model.fit(df_train[FEATURES_BASELINE], df_train["label"])
     return TrainedModel(name="Đạo Sĩ Khiêm Tốn (Baseline)", model=model, feature_cols=FEATURES_BASELINE)
 
-
 def predict_top6_per_draw(trained: TrainedModel, df: pd.DataFrame) -> pd.DataFrame:
-    """Với mỗi lần quay (draw_index) trong df, lấy xác suất mô hình gán cho
-    từng số, chọn PICK số có xác suất cao nhất làm "dự đoán của AI", rồi so
-    khớp với thực tế.
-
-    Trả về DataFrame: draw_index, so_khop (0..PICK số trúng), do_tin_binh_quan
-    (trung bình xác suất của PICK số được AI chọn — đại diện "độ tự tin").
-    """
     proba = trained.model.predict_proba(df[trained.feature_cols])
     classes = trained.model.classes_
     if len(classes) == 2:

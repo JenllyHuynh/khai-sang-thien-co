@@ -1,9 +1,3 @@
-"""
-Điều phối Trận Pháp 2: sinh lịch sử -> xây đặc trưng -> chia train/test
-theo THỜI GIAN (không xáo trộn ngẫu nhiên — đúng tinh thần "học quá khứ,
-kiểm tra tương lai") -> huấn luyện Lão Tặc AI & Đạo Sĩ Khiêm Tốn -> đánh
-giá cả hai trên dữ liệu ĐÃ HỌC và dữ liệu TƯƠNG LAI chưa từng thấy.
-"""
 import numpy as np
 
 from ..tran_phap_1_monte_carlo.lottery_config import N_NUMBERS, PICK
@@ -11,9 +5,8 @@ from .data_generator import generate_draw_history
 from .features import build_feature_table
 from .overfit_model import predict_top6_per_draw, train_dao_si_khiem_ton, train_lao_tac_ai
 
-
+#  n_draws mặc định 1560 ~ 10 năm quay số kiểu 3 lần/tuần (52 tuần x 10 năm x 3)
 def run_simulation(n_draws: int = 1560, window: int = 52, test_frac: float = 0.1, seed: int = 42) -> dict:
-    """n_draws mặc định 1560 ~ 10 năm quay số kiểu 3 lần/tuần (52 tuần × 10 năm × 3)."""
     draws = generate_draw_history(n_draws, seed=seed)
     df = build_feature_table(draws, window=window)
 

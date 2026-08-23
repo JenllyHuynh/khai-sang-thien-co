@@ -1,6 +1,4 @@
-"""Tổng hợp kết quả mô phỏng Trận Pháp 2 thành dict gọn để in/lưu JSON."""
-
-
+# Tổng hợp kết quả mô phỏng Trận Pháp 2 thành dict gọn để in/lưu JSON
 def summarize(sim_result: dict) -> dict:
     summary = {
         "n_draws": sim_result["n_draws"],
