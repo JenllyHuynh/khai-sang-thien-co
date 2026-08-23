@@ -40,6 +40,8 @@ Chi tiết kỹ thuật & tùy chỉnh tại [`src/tran_phap_1_monte_carlo/READM
 _"AI tưởng mình thông thiên, nhưng trước Random chỉ là một thằng học vẹt."_
 Nuôi một con quái vật Machine Learning, nhồi 10 năm lịch sử quay số, ép nó overfit đến độ tự tin 99.9%. Rồi cho nó vả mặt vào thực tế.
 
+Chi tiết kỹ thuật [`src/tran_phap_2_overfit_ai_/README.md`](src/tran_phap_2_overfit_ai/README.md)
+
 `src/tran_phap_2_overfit_ai/`
 
 ### Trận Pháp 3 - Phá Giải Hỗn Mang (Chaos vs. PRNG)

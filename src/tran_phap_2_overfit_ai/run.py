@@ -2,6 +2,7 @@ import argparse
 import json
 import time
 from pathlib import Path
+from datetime import datetime
 
 from .simulate import run_simulation
 from .stats import summarize
@@ -25,12 +26,24 @@ def build_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--output-dir", type=str, default="outputs/tran_phap_2")
+
+    parser.add_argument(
+        "--no-timestamp", action="store_true",
+        help="Tắt timestamp"
+    )
     return parser
 
 def main() -> None:
     args = build_parser().parse_args()
-    out_dir = Path(args.output_dir)
+
+    if args.no_timstamp:
+        out_dir = Path(args.output_dir)
+    else:
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        out_dir = Path(f"{args.output_dir}_{timestamp}")
+
     out_dir.mkdir(parents=True, exist_ok=True)
+    print(f"  Lưu kết quả vào -> {out_dir}\n")
 
     print(f"  Khởi động Trận Pháp 2 với {args.n_draws:,} lần quay lịch sử giả lập...\n")
 
