@@ -1,0 +1,22 @@
+# Nội công tâm pháp cơ bản
+numpy>=1.26,<3
+pandas>=2.1
+scipy>=1.11
+matplotlib>=3.8
+seaborn>=0.13
+plotly>=5.18
+
+# Cho Trận Pháp 2 (Overfitted Prophet)
+scikit-learn>=1.4
+
+# Cho Đạo Đài (Dashboard)
+streamlit>=1.32
+
+# Cho kiểm định RNG (Trận Pháp phụ)
+# Dieharder & NIST STS thường chạy qua CLI/binary riêng, không phải pip package
+# Xem docs/bi_kip_goc.md phần "Pháp Khí Hóa Giải" để biết cách cài đặt
+
+# Tiện ích
+tqdm>=4.66
+jupyter>=1.0
+pytest>=8.0
