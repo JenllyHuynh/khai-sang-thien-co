@@ -4,6 +4,7 @@ import datetime
 import json
 import time
 from pathlib import Path
+from datetime import datetime
 
 import numpy as np
 
@@ -42,6 +43,10 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--aggregate-only", action="store_true",
         help="Không chạy sim mới - chỉ đọc CSV hiện có và xuất lại báo cáo tổng hợp (PNG + JSON).",
+    )
+    parser.add_argument(
+        "--no-timestamp", action="store_true",
+        help="Tắt timestamp"
     )
     return parser
 
