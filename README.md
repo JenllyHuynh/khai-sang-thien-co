@@ -56,6 +56,8 @@ Chi tiết kỹ thuật [`src/tran_phap_3_chaos_prng/README.md`](src/tran_phap_3
 _"Trong họa có phúc, trong phúc có họa. Cả hai đều là... label của con người."_
 Ma trận tương quan giữa biến cố A (Trúng Jackpot) và B (Tai họa), dùng dữ liệu "Lottery Curse" từ Mỹ/Âu.
 
+Chi tiết kỹ thuật [`src/tran_phap_4_hoa_phuc/README.md`](src/tran_phap_4_hoa_phuc/README.md)
+
 `src/tran_phap_4_hoa_phuc/`
 
 ---
