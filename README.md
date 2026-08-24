@@ -48,6 +48,8 @@ Chi tiết kỹ thuật [`src/tran_phap_2_overfit_ai_/README.md`](src/tran_phap_
 _"Hỗn mang có quy luật, nhưng Xổ Số là bậc thầy của vô thường."_
 Vẽ trận đồ Lorenz Attractor, đối chiếu với PRNG máy tính, để phân biệt hỗn loạn có trật tự (deterministic chaos) và ngẫu nhiên thật.
 
+Chi tiết kỹ thuật [`src/tran_phap_3_chaos_prng/README.md`](src/tran_phap_3_chaos_prng/README.md)
+
 `src/tran_phap_3_chaos_prng/`
 
 ### Trận Pháp 4 - Bàn Cờ Nhân Quả (Quantifying Luck)

@@ -6,8 +6,8 @@
 
 Huấn luyện 2 "đạo sĩ" AI trên cùng một bộ lịch sử quay số giả lập, rồi đối chiếu ai thành thật, ai ảo tưởng:
 
-- ** Lão Tặc AI (Học Vẹt)** - cây quyết định không giới hạn độ sâu, CỐ TÌNH được cho xem `draw_index` (số thứ tự lần quay) và `number` làm đặc trưng. Vì cặp này là **định danh duy nhất** của mỗi dòng dữ liệu (không phải tín hiệu dự đoán thật), nó có thể "học thuộc lòng" toàn bộ đáp án lịch sử.
-- ** Đạo Sĩ Khiêm Tốn (Baseline)** - cây quyết định bị giới hạn độ sâu, KHÔNG được xem định danh, chỉ có tần suất/khoảng cách xuất hiện gần đây.
+- **Lão Tặc AI (Học Vẹt)** - cây quyết định không giới hạn độ sâu, CỐ TÌNH được cho xem `draw_index` (số thứ tự lần quay) và `number` làm đặc trưng. Vì cặp này là **định danh duy nhất** của mỗi dòng dữ liệu (không phải tín hiệu dự đoán thật), nó có thể "học thuộc lòng" toàn bộ đáp án lịch sử.
+- **Đạo Sĩ Khiêm Tốn (Baseline)** - cây quyết định bị giới hạn độ sâu, KHÔNG được xem định danh, chỉ có tần suất/khoảng cách xuất hiện gần đây.
 
 Cả hai được đánh giá trên 2 tập: dữ liệu **đã học** (train) và dữ liệu **tương lai chưa từng thấy** (test, chia theo mốc thời gian - không xáo trộn ngẫu nhiên, giữ đúng tinh thần "học quá khứ, thi tương lai").
 
