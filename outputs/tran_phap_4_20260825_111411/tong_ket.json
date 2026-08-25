@@ -1,0 +1,33 @@
+{
+  "params": {
+    "n_people": 2000000,
+    "p_win": 0.0005,
+    "p_hoa_baseline": 0.05,
+    "n_trials_null": 200,
+    "n_people_per_trial": 200000
+  },
+  "table": [
+    [
+      52,
+      929
+    ],
+    [
+      100353,
+      1898666
+    ]
+  ],
+  "chi2": 0.10841085465306588,
+  "p_value": 0.741960659270662,
+  "co_y_nghia_thong_ke": false,
+  "n_a1": 981,
+  "n_a0": 1999019,
+  "p_hoa_given_trung": 0.053007135575942915,
+  "p_hoa_given_khong_trung": 0.05020112365115089,
+  "chenh_lech_diem_phan_tram": 0.28060119247920245,
+  "odds_ratio": 1.0686268285826923,
+  "relative_risk": 1.055895400754196,
+  "null_distribution_mean": 0.02418591025703022,
+  "null_distribution_std": 2.241886142087231,
+  "null_distribution_min": -4.960360135050644,
+  "null_distribution_max": 7.647711610383354
+}

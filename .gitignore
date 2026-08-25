@@ -24,4 +24,4 @@ data/external/*
 .streamlit/secrets.toml
 
 # Kết quả mô phỏng (sinh ra khi chạy, không cần commit)
-outputs/
+!outputs/

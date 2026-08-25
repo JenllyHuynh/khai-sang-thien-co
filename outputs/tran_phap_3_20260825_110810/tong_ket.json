@@ -1,0 +1,19 @@
+{
+  "lyapunov": {
+    "slope": 0.594630114856885,
+    "doubling_time": 1.1656778949494868,
+    "n_points_used": 2978
+  },
+  "crack_weak_lcg": {
+    "n_predicted": 19999,
+    "max_abs_error": 0.0,
+    "mean_abs_error": 0.0,
+    "cracked": true
+  },
+  "naive_crack_on_strong_csprng": {
+    "n_predicted": 19999,
+    "max_abs_error": 0.9964417413596582,
+    "mean_abs_error": 0.3329289408224661,
+    "cracked": false
+  }
+}
