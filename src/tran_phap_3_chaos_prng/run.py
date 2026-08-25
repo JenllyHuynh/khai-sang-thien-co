@@ -30,7 +30,7 @@ def build_parser() -> argparse.ArgumentParser:
 def main() -> None:
     args = build_parser().parse_args()
     
-    if args.no_timstamp:
+    if args.no_timestamp:
         out_dir = Path(args.output_dir)
     else:
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
