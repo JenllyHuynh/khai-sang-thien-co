@@ -1,29 +1,53 @@
-"""
-Đạo Đài (Dashboard) - Khai Sáng Thiên Cơ
-Nơi các đạo hữu vào chiêm ngưỡng chân lý xác suất và cười ha hả.
+import os
+import sys
 
-Chạy bằng: streamlit run dashboard/app.py
-"""
+_REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if _REPO_ROOT not in sys.path:
+    sys.path.insert(0, _REPO_ROOT)
+
 import streamlit as st
 
 st.set_page_config(page_title="Khai Sáng Thiên Cơ", page_icon="🀄", layout="wide")
 
-st.title("🀄 Khai Sáng Thiên Cơ - Đạo Đài")
-st.caption("Vạn pháp quy về Xác Suất, thiên cơ tận tại Random.")
+st.title("Khai Sáng Thiên Cơ")
+st.caption("Vạn pháp quy về Xác Suất, thiên cơ tận tại Random. Ngã độc tôn nhất đạo, dùng Code để ngộ Đạo.")
 
 st.markdown(
     """
-    Chào đạo hữu! Đây là Đạo Đài trung tâm, nơi hội tụ Tứ Đại Trận Pháp:
+    Đây là **Đạo Đài** - nơi 4 trận pháp của bí kíp *Khai Sáng Thiên Cơ*
+    được trình diễn trực tiếp. Chọn 1 tab bên dưới, tinh chỉnh tham số
+    (nếu muốn), rồi bấm nút để mô phỏng chạy ngay trong trình duyệt.
 
-    1. **Vạn Kiếp Quy Tông** — Monte Carlo Simulator
-    2. **Lão Tặc AI** — Overfitted Prophet
-    3. **Phá Giải Hỗn Mang** — Chaos vs. PRNG
-    4. **Bàn Cờ Nhân Quả** — Quantifying Luck
-
-    Các trận pháp hiện đang được luyện chế, tiến vào từng module trong
-    `src/` để xem chi tiết. Trang này sẽ được ghép nối thành giao diện
-    hoàn chỉnh khi các trận pháp hoàn thiện.
+    Đây là dự án nghiên cứu vui, minh họa các khái niệm xác suất/thống
+    kê - không phải công cụ dự đoán xổ số hay tư vấn tài chính.
     """
 )
 
-st.info("🚧 Đạo Đài đang xây dựng — các trận pháp sẽ lần lượt xuất hiện tại đây.")
+tab1, tab2, tab3, tab4 = st.tabs([
+    "1 Vạn Kiếp Quy Tông",
+    "2 Lão Tặc AI",
+    "3 Phá Giải Hỗn Mang",
+    "4 Bàn Cờ Nhân Quả",
+])
+
+with tab1:
+    from tran_phap_1_ui import render as render_tran_phap_1
+    render_tran_phap_1()
+
+with tab2:
+    from tran_phap_2_ui import render as render_tran_phap_2
+    render_tran_phap_2()
+
+with tab3:
+    from tran_phap_3_ui import render as render_tran_phap_3
+    render_tran_phap_3()
+
+with tab4:
+    from tran_phap_4_ui import render as render_tran_phap_4
+    render_tran_phap_4()
+
+st.divider()
+st.caption(
+    "Repo: Khai Sáng Thiên Cơ - Pet Project giải trí trí tuệ, dùng Python "
+    "(numpy/pandas/scipy/scikit-learn/matplotlib) + Streamlit."
+)

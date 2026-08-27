@@ -9,10 +9,6 @@ MAU_LORENZ = "#4C72B0"
 MAU_WEAK = "#C44E52"
 MAU_STRONG = "#55A868"
 
-# Góc nhìn 3D để lộ rõ "siêu phẳng" của RANDU (Marsaglia 1968): với quan hệ x_{n+2} = 6*x_{n+1} - 9*x_n (mod m),
-# pháp tuyến của họ mặt phẳng song song là (9, -6, 1)
-# Để THẤY các mặt phẳng dạng lát mỏng xếp chồng (chứ không nhìn thẳng vào mặt phẳng)
-# camera phải nhìn DỌC THEO một vector NẰM TRONG mặt phẳng đó (vuông góc với pháp tuyến), ví dụ (6, 9, 0)
 _LATTICE_NORMAL = np.array([9.0, -6.0, 1.0])
 _VIEW_DIRECTION = np.array([6.0, 9.0, 0.0])  # vuông góc _LATTICE_NORMAL
 assert abs(np.dot(_LATTICE_NORMAL, _VIEW_DIRECTION)) < 1e-9
@@ -20,7 +16,7 @@ _VIEW_DIRECTION = _VIEW_DIRECTION / np.linalg.norm(_VIEW_DIRECTION)
 LATTICE_VIEW_AZIM = float(np.degrees(np.arctan2(_VIEW_DIRECTION[1], _VIEW_DIRECTION[0])))
 LATTICE_VIEW_ELEV = 8.0  # nghiêng nhẹ để có chiều sâu 3D, vẫn giữ rõ cấu trúc
 
-def plot_chaos_summary(trajectory, times, distance, lyapunov: dict, save_path) -> None:
+def build_chaos_figure(trajectory, times, distance, lyapunov: dict):
     fig, axes = plt.subplots(1, 2, figsize=(13, 5))
 
     axes[0].plot(trajectory[:, 0], trajectory[:, 2], linewidth=0.4, color=MAU_LORENZ)
@@ -41,10 +37,14 @@ def plot_chaos_summary(trajectory, times, distance, lyapunov: dict, save_path) -
         fontsize=12, fontweight="bold",
     )
     plt.tight_layout()
-    plt.savefig(save_path, dpi=150)
+    return fig
+
+def plot_chaos_summary(trajectory, times, distance, lyapunov: dict, save_path) -> None:
+    fig = build_chaos_figure(trajectory, times, distance, lyapunov)
+    fig.savefig(save_path, dpi=150)
     plt.close(fig)
 
-def plot_prng_structure(weak_samples, strong_samples, save_path) -> None:
+def build_prng_structure_figure(weak_samples, strong_samples):
     fig = plt.figure(figsize=(13, 6))
 
     ax1 = fig.add_subplot(1, 2, 1, projection="3d")
@@ -70,5 +70,9 @@ def plot_prng_structure(weak_samples, strong_samples, save_path) -> None:
         fontsize=12, fontweight="bold",
     )
     plt.tight_layout()
-    plt.savefig(save_path, dpi=150)
+    return fig
+
+def plot_prng_structure(weak_samples, strong_samples, save_path) -> None:
+    fig = build_prng_structure_figure(weak_samples, strong_samples)
+    fig.savefig(save_path, dpi=150)
     plt.close(fig)

@@ -1,3 +1,4 @@
+
 import matplotlib
 
 matplotlib.use("Agg")  # backend không cần GUI
@@ -7,7 +8,7 @@ import matplotlib.pyplot as plt
 MAU_TRAIN = "#4C72B0"
 MAU_TEST = "#C44E52"
 
-def plot_overfitting_summary(summary: dict, save_path) -> None:
+def build_overfitting_figure(summary: dict):
     models = list(summary["models"].keys())
     train_matches = [summary["models"][m]["train"]["avg_matches"] for m in models]
     test_matches = [summary["models"][m]["test"]["avg_matches"] for m in models]
@@ -61,5 +62,9 @@ def plot_overfitting_summary(summary: dict, save_path) -> None:
 
     fig.suptitle("Trận Pháp 2: Lão Tặc AI - Kẻ Học Vẹt", fontsize=13, fontweight="bold")
     plt.tight_layout()
-    plt.savefig(save_path, dpi=150)
+    return fig
+
+def plot_overfitting_summary(summary: dict, save_path) -> None:
+    fig = build_overfitting_figure(summary)
+    fig.savefig(save_path, dpi=150)
     plt.close(fig)

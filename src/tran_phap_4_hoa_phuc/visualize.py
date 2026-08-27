@@ -70,8 +70,7 @@ def plot_null_distribution(null_diffs: np.ndarray, actual_diff: float, ax) -> No
     ax.set_title("Phân Phối 'Nhiễu Do May Rủi' Qua Nhiều Lần Chạy Độc Lập", fontsize=10)
     ax.legend(fontsize=8)
 
-
-def plot_full_summary(table, independence_result, null_diffs, save_path) -> None:
+def build_full_figure(table, independence_result, null_diffs):
     fig, axes = plt.subplots(1, 3, figsize=(18, 5.5))
 
     plot_contingency_heatmap(table, axes[0])
@@ -83,5 +82,9 @@ def plot_full_summary(table, independence_result, null_diffs, save_path) -> None
         fontsize=13, fontweight="bold",
     )
     plt.tight_layout()
-    plt.savefig(save_path, dpi=150)
+    return fig
+
+def plot_full_summary(table, independence_result, null_diffs, save_path) -> None:
+    fig = build_full_figure(table, independence_result, null_diffs)
+    fig.savefig(save_path, dpi=150)
     plt.close(fig)
