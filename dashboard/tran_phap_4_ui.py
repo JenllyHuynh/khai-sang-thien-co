@@ -1,8 +1,10 @@
 import streamlit as st
 
+from dashboard.adversary_widget import render_adversary
 from src.tran_phap_4_hoa_phuc.simulate import run_simulation
 from src.tran_phap_4_hoa_phuc.stats import summarize
 from src.tran_phap_4_hoa_phuc.visualize import build_full_figure
+
 
 def render() -> None:
     st.header("4 Bàn Cờ Nhân Quả - Họa Phúc Song Hành")
@@ -37,6 +39,16 @@ def render() -> None:
             )
             summary = summarize(result)
 
+        st.session_state["tp4_result"] = {
+            "result": result,
+            "summary": summary,
+        }
+
+    saved = st.session_state.get("tp4_result")
+    if saved is not None:
+        result = saved["result"]
+        summary = saved["summary"]
+
         m1, m2, m3 = st.columns(3)
         m1.metric("P(Họa | Trúng)", f"{summary['p_hoa_given_trung']*100:.3f}%")
         m2.metric("P(Họa | Không Trúng)", f"{summary['p_hoa_given_khong_trung']*100:.3f}%")
@@ -50,4 +62,19 @@ def render() -> None:
             f"Odds Ratio = {summary['odds_ratio']:.3f} (≈1.0 = không liên hệ). "
             f"Qua {summary['params']['n_trials_null']} lần chạy độc lập, chênh lệch dao động quanh "
             f"{summary['null_distribution_mean']:+.3f} điểm % (độ lệch chuẩn {summary['null_distribution_std']:.3f})."
+        )
+
+        render_adversary(
+            tp_key="tp4",
+            tran_phap_name="Trận Pháp 4 - Bàn Cờ Nhân Quả (Quantifying Luck)",
+            mo_ta=(
+                "Mô phỏng ĐỘC LẬP tuyệt đối 2 biến cố: A = trúng số jackpot, "
+                "B = gặp họa (dữ liệu 'Lottery Curse' style từ Mỹ/Âu). Vì A và "
+                "B được sinh độc lập trong code, kiểm định Chi-square PHẢI "
+                "không tìm ra liên hệ có ý nghĩa nếu mô hình đúng. Chạy lặp "
+                "nhiều lần độc lập để dựng phân phối null của chênh lệch "
+                "P(Họa|Trúng) - P(Họa|Không Trúng)."
+            ),
+            params=summary["params"],
+            ket_qua={k: v for k, v in summary.items() if k != "params"},
         )

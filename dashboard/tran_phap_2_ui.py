@@ -1,8 +1,10 @@
 import streamlit as st
 
+from dashboard.adversary_widget import render_adversary
 from src.tran_phap_2_overfit_ai.simulate import run_simulation
 from src.tran_phap_2_overfit_ai.stats import summarize
 from src.tran_phap_2_overfit_ai.visualize import build_overfitting_figure
+
 
 def render() -> None:
     st.header("2 Lão Tặc AI - Kẻ Học Vẹt (Overfitted Prophet)")
@@ -29,6 +31,17 @@ def render() -> None:
         with st.spinner("Đang huấn luyện Lão Tặc AI và Đạo Sĩ Khiêm Tốn..."):
             result = run_simulation(n_draws=n_draws, window=window, test_frac=test_frac, seed=42)
             summary = summarize(result)
+
+        st.session_state["tp2_result"] = {
+            "summary": summary,
+            "n_draws": n_draws,
+            "window": window,
+            "test_frac": test_frac,
+        }
+
+    saved = st.session_state.get("tp2_result")
+    if saved is not None:
+        summary = saved["summary"]
 
         lao_tac_name = [n for n in summary["models"] if "Học Vẹt" in n][0]
         dao_si_name = [n for n in summary["models"] if "Baseline" in n][0]
@@ -58,4 +71,24 @@ def render() -> None:
             f"Đoán mò lý thuyết: {summary['theoretical_random_matches']:.3f}/6 số trúng. "
             f"Đạo Sĩ Khiêm Tốn: {ds['test']['avg_matches']:.2f}/6 trên tương lai "
             f"(khoảng cách ảo tưởng chỉ {ds['test']['ao_tuong_gap']*100:+.1f} điểm % - trung thực hơn hẳn)."
+        )
+
+        render_adversary(
+            tp_key="tp2",
+            tran_phap_name="Trận Pháp 2 - Lão Tặc AI, Kẻ Học Vẹt (Overfitted Prophet)",
+            mo_ta=(
+                "Huấn luyện 2 model trên lịch sử quay số xổ số giả lập. 'Lão "
+                "Tặc AI' được cho xem thứ tự lần quay (leakage) để overfit "
+                "quá khứ; 'Đạo Sĩ Khiêm Tốn' không có đặc quyền đó. Cả 2 được "
+                "test trên dữ liệu tương lai chưa từng thấy (train/test split "
+                "theo thời gian). So sánh 'độ tự tin' model tự báo cáo với độ "
+                "chính xác thực tế để đo mức độ ảo tưởng (overconfidence)."
+            ),
+            params={
+                "n_draws_lich_su": saved["n_draws"],
+                "window_tan_suat": saved["window"],
+                "test_frac": saved["test_frac"],
+                "seed": 42,
+            },
+            ket_qua=summary,
         )

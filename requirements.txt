@@ -20,3 +20,6 @@ streamlit>=1.32
 tqdm>=4.66
 jupyter>=1.0
 pytest>=8.0
+
+# Cho Statistical Adversary
+google-genai>=1.0.0

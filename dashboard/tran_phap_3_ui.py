@@ -1,7 +1,9 @@
 import streamlit as st
 
+from dashboard.adversary_widget import render_adversary
 from src.tran_phap_3_chaos_prng.simulate import run_simulation
 from src.tran_phap_3_chaos_prng.visualize import build_chaos_figure, build_prng_structure_figure
+
 
 def render() -> None:
     st.header("3 Phá Giải Hỗn Mang - Chaos vs. PRNG")
@@ -36,6 +38,15 @@ def render() -> None:
                 seed=42,
             )
 
+        st.session_state["tp3_result"] = {
+            "result": result,
+            "n_steps_attractor": n_steps_attractor,
+            "n_prng_samples": n_prng_samples,
+        }
+
+    saved = st.session_state.get("tp3_result")
+    if saved is not None:
+        result = saved["result"]
         lyap = result["lyapunov"]
         crack_weak = result["crack_weak_result"]
         crack_strong = result["naive_crack_on_strong"]
@@ -55,3 +66,34 @@ def render() -> None:
         st.subheader("Phần 2: Bắt Mạch Yêu Quái")
         fig2 = build_prng_structure_figure(result["weak_lcg_samples"], result["strong_csprng_samples"])
         st.pyplot(fig2)
+
+        render_adversary(
+            tp_key="tp3",
+            tran_phap_name="Trận Pháp 3 - Phá Giải Hỗn Mang (Chaos vs. PRNG)",
+            mo_ta=(
+                "Phần 1: tích phân số hệ Lorenz (deterministic chaos), đo hệ "
+                "số Lyapunov / thời gian nhân đôi sai số giữa 2 quỹ đạo có "
+                "điều kiện ban đầu gần nhau (hiệu ứng cánh bướm). Phần 2: thử "
+                "'bắt mạch' (dự đoán số kế tiếp) một PRNG yếu (LCG kiểu RANDU) "
+                "và một CSPRNG mạnh (PCG64) chỉ từ các số quan sát được, để "
+                "đối chiếu hỗn loạn tất định với ngẫu nhiên mật mã học."
+            ),
+            params={
+                "n_buoc_quy_dao_lorenz": saved["n_steps_attractor"],
+                "dt": 0.01,
+                "n_buoc_butterfly": min(3000, saved["n_steps_attractor"]),
+                "n_mau_prng_moi_loai": saved["n_prng_samples"],
+                "seed": 42,
+            },
+            ket_qua={
+                "lyapunov": lyap,
+                "bat_mach_lcg_yeu": {
+                    "cracked": crack_weak["cracked"],
+                    "max_abs_error": crack_weak["max_abs_error"],
+                },
+                "thu_bat_mach_csprng_manh": {
+                    "cracked": crack_strong["cracked"],
+                    "max_abs_error": crack_strong["max_abs_error"],
+                },
+            },
+        )

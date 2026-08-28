@@ -89,6 +89,36 @@ flowchart TD
 
 ---
 
+## Statistical Adversary - Đối Thủ Phản Biện (chạy trên Gemini API)
+
+_"Kết luận nào chưa từng bị vặn hỏi, kết luận đó chưa đáng tin."_
+
+Sau khi chạy xong bất kỳ Trận Pháp nào trên Đạo Đài (Dashboard), một khu  vực **Statistical Adversary** sẽ xuất hiện bên dưới kết quả. 
+Bấm **"Triệu Hồi Đối Thủ"**, kết quả (tham số đầu vào + số liệu đầu ra) sẽ được gửi cho Gemini, đóng vai một đồng nghiệp phản biện khó tính chuyên soi lỗ hổng thống kê: cỡ mẫu, ý nghĩa thống kê vs. ý nghĩa thực tế, giả định mô hình, rủi ro p-hacking, tính tổng quát hoá, nhạy cảm seed...
+
+Đạo hữu có thể gõ giải trình vào ô bên dưới để **bảo vệ** kết luận của mình - Đối Thủ sẽ đánh giá thẳng thắn xem lập luận có đứng vững hay không, giống như một buổi bảo vệ luận văn thu nhỏ.
+
+**Kích hoạt tính năng:**
+
+1. Lấy API key miễn phí tại [Google AI Studio](https://aistudio.google.com/apikey).
+2. Chạy local: sao chép `.streamlit/secrets.toml.example` thành `.streamlit/secrets.toml` rồi điền key vào (file này đã bị `.gitignore` chặn, không lo lộ key khi commit).
+   ```toml
+   GEMINI_API_KEY = "key-that-cua-ban"
+   ```
+3. Deploy trên Streamlit Community Cloud: vào **App > Settings > Secrets**, dán đúng dòng trên vào ô Secrets.
+4. Chạy bằng Docker: truyền biến môi trường khi `docker run`:
+   ```bash
+   docker run -e GEMINI_API_KEY=key-cua-ban -p 8080:8080 khai-sang-thien-co
+   ```
+
+**Lưu ý:**
+Nếu chưa cấu hình key, khu vực Statistical Adversary vẫn hiển thị nhưng sẽ báo rõ cần làm gì thay vì báo lỗi khó hiểu - Dashboard vẫn dùng được bình thường mà không cần tính năng này.
+
+`src/statistical_adversary/` (logic gọi Gemini API) +
+`dashboard/adversary_widget.py` (UI dùng chung cho cả 4 trận pháp)
+
+---
+
 ## Sơ Đồ Đạo Quán (Cấu Trúc Thư Mục)
 
 ```
@@ -107,7 +137,9 @@ khai-sang-thien-co/
 │   ├── tran_phap_2_overfit_ai/     # Model AI học vẹt
 │   ├── tran_phap_3_chaos_prng/     # Lorenz Attractor & PRNG
 │   ├── tran_phap_4_hoa_phuc/       # Ma trận tương quan Họa-Phúc
-│   └── rng_kiem_dinh/              # NIST SP 800-22 / Dieharder runner
+│   ├── rng_kiem_dinh/              # NIST SP 800-22 / Dieharder runner
+│   └── statistical_adversary       # Ông bạn đồng nghiệp khó tính
+│
 │
 ├── notebooks/                        # Nơi thử nghiệm, luyện công lặt vặt
 ├── dashboard/                        # Đạo Đài Streamlit - nơi chiêm ngưỡng chân lý
