@@ -22,7 +22,7 @@
 
 ---
 
-## Tứ Đại Trận Pháp
+## Ngũ Đại Trận Pháp
 
 ### Trận Pháp 1 - Vạn Kiếp Quy Tông (Monte Carlo Simulator)
 _"Chọn số đẹp không làm tăng Thiên Mệnh, nhưng sẽ khiến tiền thưởng bị phân tán như cát bụi."_
@@ -59,6 +59,14 @@ Ma trận tương quan giữa biến cố A (Trúng Jackpot) và B (Tai họa), 
 Chi tiết kỹ thuật [`src/tran_phap_4_hoa_phuc/README.md`](src/tran_phap_4_hoa_phuc/README.md)
 
 `src/tran_phap_4_hoa_phuc/`
+
+### Trận Pháp 5 - Tâm Ma Suýt Trúng (Behavioral Agent Simulation)
+_"Tâm ma không nằm ở con số quay ra, mà ở chỗ ta diễn giải nó."_
+Bốn trận pháp trước nhìn vào kết quả và cách diễn giải xác suất; trận này nhìn vào **quyết định của người chơi sau mỗi kết quả**. Mỗi agent giả lập được chạy hai bản ghép cặp (cùng ngân sách, bộ số, chuỗi quay): bản đối chứng chỉ phản ứng với tiền bạc, bản kia được cộng thêm hứng thú khi gặp "suýt trúng" (trùng 3-5 số). **Chân lý hé lộ:** suýt trúng không làm xác suất kỳ sau tăng lên, nhưng nếu người chơi *cảm nhận* nó như tín hiệu tốt thì kéo dài cuộc chơi bao nhiêu còn tùy rất nhiều vào cách định nghĩa "suýt trúng". Đây là hệ quả của giả định, chưa phải phát hiện về con người.
+
+Chi tiết kỹ thuật [`src/tran_phap_5_tam_ma/README.md`](src/tran_phap_5_tam_ma/README.md)
+
+`src/tran_phap_5_tam_ma/`
 
 ---
 
@@ -115,7 +123,7 @@ Bấm **"Triệu Hồi Đối Thủ"**, kết quả (tham số đầu vào + s�
 Nếu chưa cấu hình key, khu vực Statistical Adversary vẫn hiển thị nhưng sẽ báo rõ cần làm gì thay vì báo lỗi khó hiểu - Dashboard vẫn dùng được bình thường mà không cần tính năng này.
 
 `src/statistical_adversary/` (logic gọi Gemini API) +
-`dashboard/adversary_widget.py` (UI dùng chung cho cả 4 trận pháp)
+`dashboard/adversary_widget.py` (UI dùng chung cho cả 5 trận pháp)
 
 ---
 
@@ -137,6 +145,7 @@ khai-sang-thien-co/
 │   ├── tran_phap_2_overfit_ai/     # Model AI học vẹt
 │   ├── tran_phap_3_chaos_prng/     # Lorenz Attractor & PRNG
 │   ├── tran_phap_4_hoa_phuc/       # Ma trận tương quan Họa-Phúc
+│   ├── tran_phap_5_tam_ma/         # Agent giả lập & hiệu ứng suýt trúng
 │   ├── rng_kiem_dinh/              # NIST SP 800-22 / Dieharder runner
 │   └── statistical_adversary       # Ông bạn đồng nghiệp khó tính
 │
