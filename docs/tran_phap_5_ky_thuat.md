@@ -63,6 +63,11 @@ Với vé cố định, số trùng ~ siêu bội(55, 6, 6) bất kể vé là g
 (nhanh hơn nhiều với hàng triệu cặp agent-kỳ). Test đối chiếu với quay 6/55 thật. `dung_ky_quay_co_k_trung`
 dựng một kỳ quay có đúng k số trùng (chọn k số từ vé, 6-k số ngoài vé) chỉ để hiển thị câu chuyện.
 
+Mỗi hàng `M[i, :]` là chuỗi kết quả riêng của một agent, độc lập với các agent khác. Mô hình hiện tại
+không có bộ số thắng chung theo kỳ cho toàn quần thể. Cách lấy mẫu này phù hợp với các hành trình cá
+nhân độc lập. Nếu chuyển sang một kỳ quay chung cho mọi agent, phải xét lại cấu trúc phụ thuộc và
+cách ước lượng bất định; không mặc nhiên áp dụng bootstrap độc lập theo agent như hiện tại.
+
 ## 5. Điểm "suýt trúng"
 
 Chỉ dùng số lượng số trùng (3, 4, 5). Bốn cách gán trong `config.CACH_GAN_DIEM`. Agent *cảm nhận* kỳ
@@ -79,12 +84,20 @@ bởi tiền thưởng, và bản nhạy chỉ có thêm phần `beta*S`.
 - Khoảng tin cậy 95% bootstrap (percentile) theo agent, resample chia khối để tiết kiệm RAM.
 - Đường còn chơi: `S(t) = P(số kỳ ≥ t)` cho mỗi bản. Số kỳ trung bình là trung bình bị chặn ở `max_ky`
   (mặc định 300; thực tế gần như không agent nào chạm).
-- Nhóm đã/chưa từng gặp suýt trúng được báo riêng để thấy hiệu ứng tập trung ở ai.
+- Nhóm đã/chưa từng gặp suýt trúng đếm `bảng_điểm[M] > 0` theo cấu hình, chỉ trong các kỳ thực sự
+  chơi ở bản nhạy. Khi chọn `chi_4_5_so`, trùng 3 số không được tính. Đây là phân nhóm mô tả sau
+  mô phỏng, phụ thuộc thời gian chơi; không phải phân nhóm can thiệp từ đầu để suy luận nhân quả.
 - Quét β và lưới độ bền (cách gán S x ρ) dùng chung quần thể và chuỗi quay; mỗi ô lưới có đối chứng riêng
   vì ρ làm đổi hành vi của chính nhóm đối chứng.
 
 Lưu ý: bootstrap chỉ đo độ lệch giữa các agent trong một seed. Qua 10 seed (N=10.000, β=1) kéo dài tương
 đối dao động từ +2.3% đến +2.8% (trung bình ~2.5%, độ lệch chuẩn ~0.15 điểm %).
+
+Nhãn thời gian: `P(số kỳ >= t)` là tỷ lệ mua vé **ở kỳ t**. Tỷ lệ tiếp tục **sau t kỳ** tương ứng
+`P(số kỳ >= t+1)` nếu t nhỏ hơn giới hạn theo dõi; không suy ra việc tiếp tục sau `max_ky`.
+
+So sánh các bảng điểm thay đổi cả tần suất tín hiệu lẫn độ lớn S. Do tác động là `β*S`, kết quả lưới
+không tự chứng minh rằng định nghĩa S quan trọng hơn β ngoài phạm vi cấu hình đã khảo sát.
 
 ## 7. Cách chọn tham số mặc định
 

@@ -19,6 +19,10 @@ Dừng khi: tự dừng, không đủ tiền mua vé kỳ sau, hoặc chạm gi�
 Mỗi agent được chạy **hai bản**, dùng CHUNG ngân sách, bộ số, chuỗi số trùng từng kỳ và cả số
 ngẫu nhiên dùng để quyết định (common random numbers). Khác biệt duy nhất là β:
 
+Các agent khác nhau có chuỗi kết quả độc lập. Đây là mô phỏng nhiều hành trình cá nhân,
+không phải toàn bộ quần thể cùng tham gia một kỳ quay chung. Bộ số cụ thể chỉ dùng để minh họa
+câu chuyện; động lực hiện tại phụ thuộc số lượng số trùng, được lấy mẫu trực tiếp từ phân phối siêu bội.
+
 | Phiên bản | β | Cách phản ứng |
 |---|---|---|
 | Đối chứng | 0 | Hứng thú chỉ chịu tác động của kết quả tiền bạc |
@@ -32,8 +36,8 @@ H(t+1) = rho * H(t) + alpha * R(t) + beta * S(t)        xác suất tiếp tục
 
 - `R(t)`: lãi/lỗ của kỳ, tính theo đơn vị giá vé, nén kiểu log (thua trọn vé = -0.69), chặn ở ±5.
 - `S(t)`: điểm "suýt trúng" theo số trùng 3, 4, 5 (trùng 6 là jackpot, thắng thật, nên S=0).
-- Tiền thưởng nằm trong `R`, cảm giác gần thắng nằm trong `S`: **hai bản nhận tiền y hệt nhau**,
-  bản nhạy chỉ có thêm phản ứng tâm lý.
+- Tiền thưởng nằm trong `R`, cảm giác gần thắng nằm trong `S`: **ở những kỳ cả hai bản cùng chơi,
+  tiền thưởng giống nhau**. Tổng tiền nhận có thể khác vì bản nhạy chơi thêm sau khi đối chứng dừng.
 
 Bốn cách gán `S` để thử độ bền (`--cach-gan-diem`):
 
@@ -67,8 +71,11 @@ agent), `quet_beta_va_do_ben.png` (quét β, lưới độ bền), `tong_ket.jso
 |---|---|---|
 | Số kỳ trung bình | 18.77 | 19.28 (chênh +0.52, CI95 +0.46..+0.58) |
 | Tiền chi trung bình | 187,656đ | 192,812đ |
-| Còn chơi sau 20 kỳ | 43.7% | 45.0% |
-| Còn chơi sau 30 kỳ | 16.0% | 17.7% |
+| Có mua vé ở kỳ 20 | 43.7% | 45.0% |
+| Có mua vé ở kỳ 30 | 16.0% | 17.7% |
+
+Đường còn chơi tính `P(số kỳ đã chơi >= t)`: tỷ lệ có mua vé ở kỳ `t`, không phải tỷ lệ tiếp tục
+sau khi hoàn tất kỳ đó. Ví dụ, 43.70% đối chứng mua vé kỳ 20; 40.49% tiếp tục sang kỳ 21.
 
 - Kéo dài tương đối **+2.75%** ở seed 42; qua 10 seed khác nhau là **+2.3% đến +2.8%** (trung bình ~2.5%).
 - Chỉ **5.1%** agent chơi lâu hơn; đó là nhóm từng gặp suýt trúng (21.4% quần thể). Nhóm chưa gặp
@@ -84,9 +91,14 @@ agent), `quet_beta_va_do_ben.png` (quét β, lưới độ bền), `tong_ket.jso
 | `tu_3_so_nhu_nhau` | 4.3% | 5.6% | 7.9% | 10.6% |
 | `chi_4_5_so` | 0.1% | 0.2% | 0.2% | 0.4% |
 
-Kết quả nhạy với cách định nghĩa "suýt trúng" hơn là với β: cùng β=1, độ kéo dài chênh nhau
-**hàng chục lần** giữa các cách gán. Lý do: trùng 3 số xảy ra ~1.27% mỗi kỳ, trùng 4-5 số chỉ
-~0.06%, nên có tính "trùng 3 số" vào suýt trúng hay không gần như quyết định mọi thứ.
+Trong phạm vi tham số đã khảo sát, độ kéo dài thay đổi đáng kể giữa các cách gán điểm,
+đặc biệt khi có hoặc không tính trùng 3 số. Trùng 3 số xảy ra ~1.27% mỗi kỳ, trùng 4-5 số chỉ
+~0.06%. Các bảng điểm đổi cả loại sự kiện lẫn cường độ kích thích, nên chưa đủ cơ sở xếp hạng
+mức nhạy với cách định nghĩa S so với mức nhạy với β: mô hình dùng tích `β*S`.
+
+Thống kê "từng gặp suýt trúng" đếm kỳ có **S > 0 theo cấu hình**, chỉ trong các kỳ agent thực sự
+chơi ở bản nhạy. Với `chi_4_5_so`, trùng 3 không được đếm. Đây là phân nhóm mô tả sau mô phỏng;
+không dùng chênh lệch của nhóm này như một ước lượng tác động nhân quả giữa các nhóm người.
 
 ## Đọc kết quả thế nào cho đúng
 

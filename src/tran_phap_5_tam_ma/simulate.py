@@ -19,7 +19,9 @@ def ty_le_hoan_tra_ly_thuyet(tham_so: ThamSo) -> float:
 
 def tao_hat_giong(n_agents: int, tham_so: ThamSo, seed: int) -> dict:
     """Mọi thứ NGẪU NHIÊN được sinh một lần và dùng chung cho cả hai bản của mỗi agent:
-    ngân sách, bộ số, H0, chuỗi số trùng từng kỳ, và số ngẫu nhiên dùng để quyết định."""
+    ngân sách, bộ số, H0, chuỗi số trùng từng kỳ, và số ngẫu nhiên dùng để quyết định.
+    Các agent khác nhau có chuỗi kết quả độc lập; không có kỳ quay chung cho quần thể.
+    """
     s_agent, s_quay, s_quyet = np.random.SeedSequence(seed).spawn(3)
     pop = tao_quan_the(n_agents, tham_so, np.random.default_rng(s_agent))
     so_trung = sample_so_trung(np.random.default_rng(s_quay), (n_agents, tham_so.max_ky))

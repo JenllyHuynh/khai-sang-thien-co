@@ -63,7 +63,7 @@ def plot_cau_chuyen(cau_chuyen: dict | None, ax) -> None:
     gap = [c for c in cac_ky if c["diem_suyt_trung"] > 0]
     if gap:
         ax.scatter([c["ky"] for c in gap], [c["h_nhay"] for c in gap], marker="*", s=180,
-                   color="gold", edgecolor="black", zorder=5, label="Suýt trúng (trùng 3-5 số)")
+                   color="gold", edgecolor="black", zorder=5, label="Suýt trúng (S > 0 theo cấu hình)")
     ax.axvline(cau_chuyen["ky_dung_doi_chung"], color=MAU_DOI_CHUNG, ls=":", lw=1.2)
     ax.axvline(cau_chuyen["ky_dung_nhay"], color=MAU_NHAY, ls=":", lw=1.2)
     ax.set_xlabel("Kỳ quay")

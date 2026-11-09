@@ -14,7 +14,7 @@ st.caption("Vạn pháp quy về Xác Suất, thiên cơ tận tại Random. Ng�
 
 st.markdown(
     """
-    Đây là **Đạo Đài** - nơi 4 trận pháp của bí kíp *Khai Sáng Thiên Cơ*
+    Đây là **Đạo Đài** - nơi 5 trận pháp của bí kíp *Khai Sáng Thiên Cơ*
     được trình diễn trực tiếp. Chọn 1 tab bên dưới, tinh chỉnh tham số
     (nếu muốn), rồi bấm nút để mô phỏng chạy ngay trong trình duyệt.
 
@@ -23,11 +23,12 @@ st.markdown(
     """
 )
 
-tab1, tab2, tab3, tab4 = st.tabs([
+tab1, tab2, tab3, tab4, tab5 = st.tabs([
     "1 Vạn Kiếp Quy Tông",
     "2 Lão Tặc AI",
     "3 Phá Giải Hỗn Mang",
     "4 Bàn Cờ Nhân Quả",
+    "5 Tâm Ma Suýt Trúng",
 ])
 
 with tab1:
@@ -45,6 +46,10 @@ with tab3:
 with tab4:
     from tran_phap_4_ui import render as render_tran_phap_4
     render_tran_phap_4()
+
+with tab5:
+    from tran_phap_5_ui import render as render_tran_phap_5
+    render_tran_phap_5()
 
 st.divider()
 st.caption(

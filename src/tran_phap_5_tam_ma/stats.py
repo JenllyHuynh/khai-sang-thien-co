@@ -1,6 +1,6 @@
 import numpy as np
 
-from .dynamics import CHAM_GIOI_HAN, TU_DUNG, HET_NGAN_SACH
+from .dynamics import CHAM_GIOI_HAN, TU_DUNG, HET_NGAN_SACH, bang_diem_suyt_trung
 from .config import ThamSo
 
 
@@ -24,11 +24,14 @@ def bootstrap_trung_binh(x: np.ndarray, rng: np.random.Generator, n_boot: int = 
     return float(lo), float(hi)
 
 
-def dem_suyt_trung(so_trung: np.ndarray, so_ky: np.ndarray, k_min: int = 3, k_max: int = 5) -> np.ndarray:
-    # Số lần mỗi agent gặp 'suýt trúng' (trùng k_min..k_max số) trong các kỳ nó thực sự chơi.
+def dem_suyt_trung(so_trung: np.ndarray, so_ky: np.ndarray, k_min: int = 3, k_max: int = 5,
+                  *, bang_diem: np.ndarray | None = None) -> np.ndarray:
+    # Có bảng điểm: chỉ đếm kỳ S > 0 theo cấu hình đang chạy.
+    # Không có bảng điểm: giữ cách gọi cũ, đếm trùng k_min..k_max số.
     t_max = so_trung.shape[1]
     da_choi = np.arange(t_max)[None, :] < so_ky[:, None]
-    gap = (so_trung >= k_min) & (so_trung <= k_max)
+    gap = ((so_trung >= k_min) & (so_trung <= k_max)
+           if bang_diem is None else np.asarray(bang_diem)[so_trung] > 0)
     return (gap & da_choi).sum(axis=1)
 
 
@@ -46,8 +49,11 @@ def so_sanh_cap(doi_chung: dict, nhay: dict, so_trung: np.ndarray, tham_so: Tham
     lo, hi = bootstrap_trung_binh(d_ky, rng, n_boot)
     lo_c, hi_c = bootstrap_trung_binh(d_chi, rng, n_boot)
 
-    # Nhóm đã từng gặp suýt trúng trong lúc chơi (ở bản nhạy, bản chơi lâu hơn hoặc bằng)
-    so_lan = dem_suyt_trung(so_trung, nhay["so_ky"])
+    # Phân nhóm mô tả theo các kỳ thực sự chơi ở bản nhạy; không phải nhóm gán từ đầu.
+    # Đếm đúng S > 0, kể cả khi cấu hình loại trùng 3 số khỏi tín hiệu kích thích.
+    so_lan = dem_suyt_trung(
+        so_trung, nhay["so_ky"], bang_diem=bang_diem_suyt_trung(tham_so.cach_gan_diem)
+    )
     da_gap = so_lan > 0
 
     def _ly_do(ld):

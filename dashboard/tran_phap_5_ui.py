@@ -27,6 +27,10 @@ def render() -> None:
         "Chiều của hiệu ứng được lập trình sẵn; thứ đáng xem là độ lớn và độ nhạy với giả định.",
         icon="⚠️",
     )
+    st.caption(
+        "Mỗi agent có chuỗi kết quả riêng, độc lập với agent khác; hai bản của cùng agent dùng chung chuỗi đó. "
+        "Mô hình không dùng một kỳ quay chung cho toàn quần thể."
+    )
 
     c1, c2, c3 = st.columns(3)
     with c1:
@@ -76,8 +80,9 @@ def render() -> None:
             st.markdown(f"- {dong}")
 
     st.caption(
-        f"{ss['ty_le_agent_tung_gap_suyt_trung']*100:.1f}% agent từng gặp ít nhất một kỳ suýt trúng; "
-        f"chỉ nhóm này mới bị kéo dài (TB {ss['chenh_ky_tb_nhom_tung_gap']:.2f} kỳ). "
+        f"{ss['ty_le_agent_tung_gap_suyt_trung']*100:.1f}% agent từng gặp tín hiệu S > 0 theo cấu hình "
+        f"trong các kỳ thực sự chơi ở bản nhạy; nhóm này chơi thêm TB {ss['chenh_ky_tb_nhom_tung_gap']:.2f} kỳ. "
+        "Đây là phân nhóm mô tả sau mô phỏng, không phải nhóm đối chứng độc lập. "
         f"Tiền thưởng kỳ vọng / giá vé theo bảng giả định: {summary['rtp_ly_thuyet']*100:.1f}%."
     )
 
@@ -92,7 +97,8 @@ def render() -> None:
         mo_ta=(
             "Mô phỏng agent mua 1 vé/kỳ cho xổ số 6/55. Hứng thú H' = rho*H + alpha*R + beta*S, "
             "xác suất tiếp tục = sigmoid(H). R là kết quả tiền bạc chuẩn hóa, S là điểm 'suýt trúng' "
-            "theo số trùng 3-5. Mỗi agent chạy hai bản ghép cặp (đối chứng beta=0 và nhạy beta>0) với "
+            "theo bảng điểm cấu hình cho số trùng 3-5; chỉ S>0 mới tính là tín hiệu suýt trúng. "
+            "Các agent có chuỗi kết quả độc lập. Mỗi agent chạy hai bản ghép cặp (đối chứng beta=0 và nhạy beta>0) với "
             "cùng ngân sách, bộ số, chuỗi quay và số ngẫu nhiên quyết định, nên bản nhạy không bao giờ "
             "chơi ít hơn bản đối chứng. Tham số là giả định, chưa đo từ người thật."
         ),

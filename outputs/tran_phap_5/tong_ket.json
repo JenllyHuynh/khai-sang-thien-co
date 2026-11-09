@@ -1,0 +1,241 @@
+{
+  "params": {
+    "n_agents": 10000,
+    "beta": 1.0,
+    "seed": 42,
+    "rho": 0.985,
+    "alpha": 0.06,
+    "r_cap": 5.0,
+    "cach_gan_diem": "tuyen_tinh",
+    "h0_mean": 4.5,
+    "h0_std": 0.8,
+    "ngan_sach_median_ve": 40.0,
+    "ngan_sach_sigma": 0.8,
+    "max_ky": 300,
+    "gia_ve": 10000,
+    "bang_thuong": {
+      "3": 50000,
+      "4": 500000,
+      "5": 40000000,
+      "6": 30000000000
+    }
+  },
+  "rtp_ly_thuyet": 0.2380295743225821,
+  "so_sanh": {
+    "so_ky_tb_doi_chung": 18.7656,
+    "so_ky_tb_nhay": 19.2812,
+    "chenh_ky_tb": 0.5156,
+    "chenh_ky_tb_ci95": [
+      0.46198750000000005,
+      0.5759449999999999
+    ],
+    "chenh_ky_tuong_doi_pct": 2.7475806795412883,
+    "ty_le_agent_choi_lau_hon": 0.0507,
+    "ty_le_agent_choi_it_hon": 0.0,
+    "chenh_ky_lon_nhat": 39.0,
+    "chi_tb_doi_chung": 187656.0,
+    "chi_tb_nhay": 192812.0,
+    "chenh_chi_tb": 5156.0,
+    "chenh_chi_tb_ci95": [
+      4643.775000000001,
+      5713.0
+    ],
+    "nhan_tb_doi_chung": 34595.0,
+    "nhan_tb_nhay": 35140.0,
+    "thua_rong_tb_doi_chung": 153061.0,
+    "thua_rong_tb_nhay": 157672.0,
+    "chenh_thua_rong_tb": 4611.0,
+    "ty_le_agent_tung_gap_suyt_trung": 0.2138,
+    "chenh_ky_tb_nhom_tung_gap": 2.411599625818522,
+    "chenh_ky_tb_nhom_khong_gap": 0.0,
+    "ly_do_dung_doi_chung": {
+      "cham_gioi_han": 0.0,
+      "tu_dung": 0.8031,
+      "het_ngan_sach": 0.1969
+    },
+    "ly_do_dung_nhay": {
+      "cham_gioi_han": 0.0,
+      "tu_dung": 0.7949,
+      "het_ngan_sach": 0.2051
+    }
+  },
+  "con_choi_theo_ky": {
+    "5": {
+      "doi_chung": 0.9272,
+      "nhay": 0.9278
+    },
+    "10": {
+      "doi_chung": 0.7919,
+      "nhay": 0.7951
+    },
+    "20": {
+      "doi_chung": 0.437,
+      "nhay": 0.4496
+    },
+    "30": {
+      "doi_chung": 0.16,
+      "nhay": 0.1767
+    },
+    "50": {
+      "doi_chung": 0.0043,
+      "nhay": 0.0085
+    },
+    "100": {
+      "doi_chung": 0.0,
+      "nhay": 0.0
+    }
+  },
+  "quet_beta": [
+    {
+      "beta": 0.0,
+      "chenh_ky_tb": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "tuong_doi_pct": 0.0,
+      "ty_le_agent_choi_lau_hon": 0.0,
+      "chenh_thua_rong_tb": 0.0
+    },
+    {
+      "beta": 0.25,
+      "chenh_ky_tb": 0.1162,
+      "ci95": [
+        0.09087500000000001,
+        0.143
+      ],
+      "tuong_doi_pct": 0.6192181438376604,
+      "ty_le_agent_choi_lau_hon": 0.0129,
+      "chenh_thua_rong_tb": 1037.0
+    },
+    {
+      "beta": 0.5,
+      "chenh_ky_tb": 0.2256,
+      "ci95": [
+        0.1903475,
+        0.2600525
+      ],
+      "tuong_doi_pct": 1.2021997697915334,
+      "ty_le_agent_choi_lau_hon": 0.0254,
+      "chenh_thua_rong_tb": 2006.0
+    },
+    {
+      "beta": 1.0,
+      "chenh_ky_tb": 0.5156,
+      "ci95": [
+        0.4685125,
+        0.5756874999999999
+      ],
+      "tuong_doi_pct": 2.7475806795412883,
+      "ty_le_agent_choi_lau_hon": 0.0507,
+      "chenh_thua_rong_tb": 4611.0
+    },
+    {
+      "beta": 1.5,
+      "chenh_ky_tb": 0.7776,
+      "ci95": [
+        0.7148375,
+        0.8457625
+      ],
+      "tuong_doi_pct": 4.143752398004859,
+      "ty_le_agent_choi_lau_hon": 0.0704,
+      "chenh_thua_rong_tb": 6991.0
+    },
+    {
+      "beta": 2.0,
+      "chenh_ky_tb": 1.0494,
+      "ci95": [
+        0.9676375,
+        1.136
+      ],
+      "tuong_doi_pct": 5.5921473334185965,
+      "ty_le_agent_choi_lau_hon": 0.0861,
+      "chenh_thua_rong_tb": 9524.0
+    },
+    {
+      "beta": 3.0,
+      "chenh_ky_tb": 1.5806,
+      "ci95": [
+        1.4717500000000001,
+        1.6948649999999998
+      ],
+      "tuong_doi_pct": 8.422858848105044,
+      "ty_le_agent_choi_lau_hon": 0.111,
+      "chenh_thua_rong_tb": 14301.0
+    }
+  ],
+  "do_ben": {
+    "beta": 1.0,
+    "cach_gan_diem": [
+      "tuyen_tinh",
+      "nhan_manh_gan_nhat",
+      "tu_3_so_nhu_nhau",
+      "chi_4_5_so"
+    ],
+    "rho": [
+      0.95,
+      0.97,
+      0.985,
+      0.995
+    ],
+    "chenh_ky_tb": [
+      [
+        0.1796,
+        0.297,
+        0.5156,
+        0.7614
+      ],
+      [
+        0.0559,
+        0.1103,
+        0.1649,
+        0.294
+      ],
+      [
+        0.5284,
+        0.8571,
+        1.4766,
+        2.4247
+      ],
+      [
+        0.0093,
+        0.0228,
+        0.0455,
+        0.1016
+      ]
+    ],
+    "tuong_doi_pct": [
+      [
+        1.4495326951945893,
+        1.9534975499062714,
+        2.7475806795412883,
+        3.3185146443514646
+      ],
+      [
+        0.4511630159319462,
+        0.725490840924787,
+        0.8787355586818433,
+        1.2813807531380752
+      ],
+      [
+        4.264660780294103,
+        5.637517676850725,
+        7.868653280470649,
+        10.567904463040447
+      ],
+      [
+        0.07505932107633452,
+        0.14996546847765319,
+        0.24246493584004775,
+        0.44281729428172945
+      ]
+    ],
+    "so_ky_tb_doi_chung_theo_rho": [
+      12.3902,
+      15.2035,
+      18.7656,
+      22.944
+    ]
+  },
+  "cau_chuyen_tom_tat": "Agent #113: ngân sách 1,370,000đ (137 vé), bộ số 12 15 21 35 36 51, hứng thú ban đầu H0 = 4.71. Kỳ 1-37: không có kỳ nào sát nút (37 kỳ trắng thưởng); hứng thú giảm từ 4.71 xuống 1.50. Kỳ 38: quay 12 26 36 37 50 51, trùng 3 số (nhận 50,000đ). Bản đối chứng: H 1.50 -> 1.58. Bản nhạy suýt trúng: H 1.50 -> 1.91. Bản đối chứng dừng sau 41 kỳ (tự dừng); bản nhạy suýt trúng dừng sau 49 kỳ (tự dừng). Cùng ngân sách, cùng bộ số, cùng chuỗi quay, cùng số ngẫu nhiên quyết định. Lưu ý: agent này được chọn vì chênh lệch (8 kỳ) gần trung vị của nhóm bị kéo dài, không phải vì ấn tượng nhất; và nhóm đó chỉ là một phần nhỏ trong quần thể."
+}

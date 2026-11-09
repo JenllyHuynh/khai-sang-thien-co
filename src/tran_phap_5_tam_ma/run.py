@@ -73,7 +73,7 @@ def main() -> None:
     print(f"  Thua ròng TB       : đối chứng {ss['thua_rong_tb_doi_chung']:,.0f}đ | nhạy {ss['thua_rong_tb_nhay']:,.0f}đ")
     print(f"  Agent chơi lâu hơn : {ss['ty_le_agent_choi_lau_hon']*100:.1f}% "
           f"(agent chơi ít hơn: {ss['ty_le_agent_choi_it_hon']*100:.1f}%, bằng 0 theo cách ghép cặp)")
-    print(f"  Agent từng gặp suýt trúng: {ss['ty_le_agent_tung_gap_suyt_trung']*100:.1f}% "
+    print(f"  Agent từng gặp S > 0 (theo cấu hình, trong bản nhạy): {ss['ty_le_agent_tung_gap_suyt_trung']*100:.1f}% "
           f"-> nhóm này chơi thêm TB {ss['chenh_ky_tb_nhom_tung_gap']:.2f} kỳ; "
           f"nhóm chưa gặp: {ss['chenh_ky_tb_nhom_khong_gap']:.2f} kỳ")
     print(f"  Lý do dừng (đối chứng): " + ", ".join(f"{k} {v*100:.1f}%" for k, v in ss["ly_do_dung_doi_chung"].items()))

@@ -1,0 +1,89 @@
+{
+  "params": {
+    "n_agents": 10000,
+    "beta": 1.0,
+    "seed": 42,
+    "rho": 0.985,
+    "alpha": 0.06,
+    "r_cap": 5.0,
+    "cach_gan_diem": "chi_4_5_so",
+    "h0_mean": 4.5,
+    "h0_std": 0.8,
+    "ngan_sach_median_ve": 40.0,
+    "ngan_sach_sigma": 0.8,
+    "max_ky": 300,
+    "gia_ve": 10000,
+    "bang_thuong": {
+      "3": 50000,
+      "4": 500000,
+      "5": 40000000,
+      "6": 30000000000
+    }
+  },
+  "rtp_ly_thuyet": 0.2380295743225821,
+  "so_sanh": {
+    "so_ky_tb_doi_chung": 18.7656,
+    "so_ky_tb_nhay": 18.8111,
+    "chenh_ky_tb": 0.0455,
+    "chenh_ky_tb_ci95": [
+      0.029395000000000004,
+      0.0624
+    ],
+    "chenh_ky_tuong_doi_pct": 0.24246493584004775,
+    "ty_le_agent_choi_lau_hon": 0.0043,
+    "ty_le_agent_choi_it_hon": 0.0,
+    "chenh_ky_lon_nhat": 31.0,
+    "chi_tb_doi_chung": 187656.0,
+    "chi_tb_nhay": 188111.0,
+    "chenh_chi_tb": 455.0,
+    "chenh_chi_tb_ci95": [
+      307.975,
+      627.025
+    ],
+    "nhan_tb_doi_chung": 34595.0,
+    "nhan_tb_nhay": 34670.0,
+    "thua_rong_tb_doi_chung": 153061.0,
+    "thua_rong_tb_nhay": 153441.0,
+    "chenh_thua_rong_tb": 380.0,
+    "ty_le_agent_tung_gap_suyt_trung": 0.0131,
+    "chenh_ky_tb_nhom_tung_gap": 3.4732824427480917,
+    "chenh_ky_tb_nhom_khong_gap": 0.0,
+    "ly_do_dung_doi_chung": {
+      "cham_gioi_han": 0.0,
+      "tu_dung": 0.8031,
+      "het_ngan_sach": 0.1969
+    },
+    "ly_do_dung_nhay": {
+      "cham_gioi_han": 0.0,
+      "tu_dung": 0.8031,
+      "het_ngan_sach": 0.1969
+    }
+  },
+  "con_choi_theo_ky": {
+    "5": {
+      "doi_chung": 0.9272,
+      "nhay": 0.9272
+    },
+    "10": {
+      "doi_chung": 0.7919,
+      "nhay": 0.7919
+    },
+    "20": {
+      "doi_chung": 0.437,
+      "nhay": 0.4376
+    },
+    "30": {
+      "doi_chung": 0.16,
+      "nhay": 0.1615
+    },
+    "50": {
+      "doi_chung": 0.0043,
+      "nhay": 0.005
+    },
+    "100": {
+      "doi_chung": 0.0,
+      "nhay": 0.0
+    }
+  },
+  "cau_chuyen_tom_tat": "Agent #1928: ngân sách 600,000đ (60 vé), bộ số 03 22 28 39 47 53, hứng thú ban đầu H0 = 4.59. Kỳ 1-14: không có kỳ nào sát nút (14 kỳ trắng thưởng); hứng thú giảm từ 4.59 xuống 3.19. Kỳ 15: quay 03 22 28 29 42 53, trùng 4 số (nhận 500,000đ). Bản đối chứng: H 3.19 -> 3.38. Bản nhạy suýt trúng: H 3.19 -> 3.88. Bản đối chứng dừng sau 23 kỳ (tự dừng); bản nhạy suýt trúng dừng sau 31 kỳ (tự dừng). Cùng ngân sách, cùng bộ số, cùng chuỗi quay, cùng số ngẫu nhiên quyết định. Lưu ý: agent này được chọn vì chênh lệch (8 kỳ) gần trung vị của nhóm bị kéo dài, không phải vì ấn tượng nhất; và nhóm đó chỉ là một phần nhỏ trong quần thể."
+}
