@@ -2,7 +2,9 @@
 .gitignore
 !outputs/
 data/
-notebooks/
+docs/notebooks/
+paper/
+.idea/
 tests/
 docs/
 *.md

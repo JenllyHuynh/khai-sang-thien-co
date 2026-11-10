@@ -4,17 +4,17 @@ from math import comb
 
 import numpy as np
 
-from src.tran_phap_5_tam_ma.config import ThamSo, CACH_GAN_DIEM
-from src.tran_phap_5_tam_ma.draws import (
+from src.tran_phap_5_near_miss.config import ThamSo, CACH_GAN_DIEM
+from src.tran_phap_5_near_miss.draws import (
     dung_ky_quay_co_k_trung, pmf_so_trung, quay_so_that, sample_so_trung, so_trung,
 )
-from src.tran_phap_5_tam_ma.dynamics import (
+from src.tran_phap_5_near_miss.dynamics import (
     CHAM_GIOI_HAN, HET_NGAN_SACH, bang_diem_suyt_trung, bang_thuong_theo_so_trung,
     chay_mot_ban, chuan_hoa_tien,
 )
-from src.tran_phap_5_tam_ma.simulate import chay_cap, chay_thi_nghiem, tao_hat_giong
-from src.tran_phap_5_tam_ma.stats import summarize, dem_suyt_trung, so_sanh_cap, ty_le_con_choi
-from src.tran_phap_5_tam_ma.story import dung_cau_chuyen
+from src.tran_phap_5_near_miss.simulate import chay_cap, chay_thi_nghiem, tao_hat_giong
+from src.tran_phap_5_near_miss.stats import summarize, dem_suyt_trung, so_sanh_cap, ty_le_con_choi
+from src.tran_phap_5_near_miss.story import dung_cau_chuyen
 
 
 def test_pmf_so_trung_khop_cong_thuc_to_hop():

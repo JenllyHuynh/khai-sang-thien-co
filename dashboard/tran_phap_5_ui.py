@@ -3,10 +3,10 @@ from dataclasses import replace
 import streamlit as st
 
 from dashboard.adversary_widget import render_adversary
-from src.tran_phap_5_tam_ma.config import CACH_GAN_DIEM, ThamSo
-from src.tran_phap_5_tam_ma.simulate import chay_thi_nghiem
-from src.tran_phap_5_tam_ma.stats import summarize
-from src.tran_phap_5_tam_ma.visualize import build_main_figure, build_sweep_figure
+from src.tran_phap_5_near_miss.config import CACH_GAN_DIEM, ThamSo
+from src.tran_phap_5_near_miss.simulate import chay_thi_nghiem
+from src.tran_phap_5_near_miss.stats import summarize
+from src.tran_phap_5_near_miss.visualize import build_main_figure, build_sweep_figure
 
 BETAS_QUET = [0.0, 0.25, 0.5, 1.0, 1.5, 2.0, 3.0]
 RHOS_DO_BEN = [0.95, 0.97, 0.985, 0.995]

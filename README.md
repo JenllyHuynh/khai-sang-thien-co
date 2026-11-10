@@ -40,9 +40,9 @@ Chi tiết kỹ thuật & tùy chỉnh tại [`src/tran_phap_1_monte_carlo/READM
 _"AI tưởng mình thông thiên, nhưng trước Random chỉ là một thằng học vẹt."_
 Nuôi một con quái vật Machine Learning, nhồi 10 năm lịch sử quay số, ép nó overfit đến độ tự tin 99.9%. Rồi cho nó vả mặt vào thực tế.
 
-Chi tiết kỹ thuật [`src/tran_phap_2_overfit_ai_/README.md`](src/tran_phap_2_overfit_ai/README.md)
+Chi tiết kỹ thuật [`src/tran_phap_2_overfit/README.md`](src/tran_phap_2_overfit/README.md)
 
-`src/tran_phap_2_overfit_ai/`
+`src/tran_phap_2_overfit/`
 
 ### Trận Pháp 3 - Phá Giải Hỗn Mang (Chaos vs. PRNG)
 _"Hỗn mang có quy luật, nhưng Xổ Số là bậc thầy của vô thường."_
@@ -64,9 +64,9 @@ Chi tiết kỹ thuật [`src/tran_phap_4_hoa_phuc/README.md`](src/tran_phap_4_h
 _"Tâm ma không nằm ở con số quay ra, mà ở chỗ ta diễn giải nó."_
 Bốn trận pháp trước nhìn vào kết quả và cách diễn giải xác suất; trận này nhìn vào **quyết định của người chơi sau mỗi kết quả**. Mỗi agent giả lập được chạy hai bản ghép cặp (cùng ngân sách, bộ số, chuỗi quay): bản đối chứng chỉ phản ứng với tiền bạc, bản kia được cộng thêm hứng thú khi gặp "suýt trúng" (trùng 3-5 số). **Chân lý hé lộ:** suýt trúng không làm xác suất kỳ sau tăng lên, nhưng nếu người chơi *cảm nhận* nó như tín hiệu tốt thì kéo dài cuộc chơi bao nhiêu còn tùy rất nhiều vào cách định nghĩa "suýt trúng". Đây là hệ quả của giả định, chưa phải phát hiện về con người.
 
-Chi tiết kỹ thuật [`src/tran_phap_5_tam_ma/README.md`](src/tran_phap_5_tam_ma/README.md)
+Chi tiết kỹ thuật [`src/tran_phap_5_near_miss/README.md`](src/tran_phap_5_near_miss/README.md)
 
-`src/tran_phap_5_tam_ma/`
+`src/tran_phap_5_near_miss/`
 
 ---
 
@@ -129,37 +129,75 @@ Nếu chưa cấu hình key, khu vực Statistical Adversary vẫn hiển thị 
 
 ## Sơ Đồ Đạo Quán (Cấu Trúc Thư Mục)
 
-```
+```text
 khai-sang-thien-co/
-├── README.md                       # Bí kíp này
-├── requirements.txt                # Danh sách nội công tâm pháp (dependencies)
-├── .gitignore
-├── LICENSE
-│
-├── data/
-│   ├── raw/                        # Dữ liệu quay số thô, chưa luyện
-│   └── external/                   # Dữ liệu mượn (Lottery Curse dataset...)
-│
-├── src/                            # Nội tạng bí kíp
-│   ├── tran_phap_1_monte_carlo/    # Mô phỏng Monte Carlo
-│   ├── tran_phap_2_overfit_ai/     # Model AI học vẹt
-│   ├── tran_phap_3_chaos_prng/     # Lorenz Attractor & PRNG
-│   ├── tran_phap_4_hoa_phuc/       # Ma trận tương quan Họa-Phúc
-│   ├── tran_phap_5_tam_ma/         # Agent giả lập & hiệu ứng suýt trúng
-│   ├── rng_kiem_dinh/              # NIST SP 800-22 / Dieharder runner
-│   └── statistical_adversary       # Ông bạn đồng nghiệp khó tính
-│
-│
-├── notebooks/                        # Nơi thử nghiệm, luyện công lặt vặt
-├── dashboard/                        # Đạo Đài Streamlit - nơi chiêm ngưỡng chân lý
+├── .devcontainer/                  # Môi trường DevContainer
+├── .streamlit/                     # Cấu hình Streamlit
+├── src/                            # Engine mô phỏng và thuật toán
+│   ├── __init__.py
+│   ├── tran_phap_1_monte_carlo/
+│   ├── tran_phap_2_overfit/
+│   ├── tran_phap_3_chaos_prng/
+│   ├── tran_phap_4_hoa_phuc/
+│   ├── tran_phap_5_near_miss/
+│   ├── rng_kiem_dinh/
+│   └── statistical_adversary/
+├── dashboard/                      # UI Streamlit và các tab
 │   └── app.py
-├── tests/                            # Kiểm chứng công phu (unit tests)
-└── docs/                             # Bí kíp gốc, ghi chú thêm
-    └── bi_kip_goc.md
+├── paper/                          # Code Python tái lập bài báo
+│   └── experiments/
+│       ├── README.md
+│       ├── frozen_config.json
+│       ├── run_frozen.py
+│       ├── verify_and_export.py
+│       ├── audit_near_miss_groups.py
+│       ├── make_figures.py
+│       └── paper_data/              # Dữ liệu đầu vào cho hình và phân nhóm
+├── outputs/
+│   ├── paper_frozen_v1/            # Kết quả, manifest SHA256 và nguồn lịch sử
+│   └── ...                         # Các kết quả mô phỏng trước đây
+├── tests/                          # Unit tests (pytest)
+├── docs/
+│   ├── notebooks/
+│   └── ...                         # Tài liệu kỹ thuật
+├── data/                           # Dữ liệu thô và dữ liệu ngoài
+├── .dockerignore
+├── .gitattributes
+├── .gitignore
+├── Dockerfile
+├── LICENSE
+├── requirements.txt                # Dependencies đầy đủ
+├── requirements-web.txt            # Dependencies cho dashboard/Docker
+└── README.md
 ```
+
+Giữ `data/`, hai module phụ và các file triển khai vì dự án vẫn sử dụng hoặc
+đã dành sẵn chúng. `.venv/`, `.idea/`, `.pytest_cache/` và `__pycache__/` là
+thư mục cục bộ được Git bỏ qua.
+
+Các lệnh chạy dùng tên mới `src.tran_phap_2_overfit` và
+`src.tran_phap_5_near_miss`. Tên cũ trong `outputs/paper_frozen_v1/source_snapshot/`
+thuộc bản lưu lịch sử và được giữ nguyên để bảo toàn SHA256.
+
+### Tái lập và kiểm tra bài báo
+
+```bash
+# Kiểm tra toàn vẹn bản lưu lịch sử, không chạy lại mô phỏng
+python paper/experiments/run_frozen.py --verify-only
+
+# Chạy lại với mã hiện tại vào thư mục mới (không ghi đè bản đóng băng)
+python paper/experiments/run_frozen.py --output-dir outputs/paper_reproduced_v1
+
+# Xuất ba hình PDF và PNG vào outputs/paper_figures/
+python paper/experiments/make_figures.py
+
+# Chạy bộ kiểm thử
+python -m pytest tests -q
+```
+
+Chi tiết kiểm chứng và xuất dữ liệu: [paper/experiments/README.md](paper/experiments/README.md).
 
 ---
-
 ## Nhập Môn (Cài Đặt)
 
 ```bash

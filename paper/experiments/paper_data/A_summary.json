@@ -1,0 +1,60 @@
+{
+ "uniform": {
+  "mean": 15.840775399999998,
+  "sd": 0.01917336554450038,
+  "min": 15.79254,
+  "max": 15.88498,
+  "unique_ratio_mean": 0.9185188039999999,
+  "max_cluster_overall": 7,
+  "max_cluster_mean_per_run": 5.66
+ },
+ "weighted": {
+  "mean": 46.085745800000005,
+  "sd": 0.027135228181175086,
+  "min": 46.01954,
+  "max": 46.15546,
+  "unique_ratio_mean": 0.7099714259999999,
+  "max_cluster_overall": 45,
+  "max_cluster_mean_per_run": 38.85
+ },
+ "ratio_of_means": 2.909311232327681,
+ "single_2e6": {
+  "uniform": 6.67915,
+  "weighted": 27.41825
+ },
+ "analytic": {
+  "total_weight": 134.0,
+  "n_lucky": 5,
+  "n_birthday_only": 27,
+  "n_other": 23,
+  "uniform_n5000000": {
+   "share_pct": 15.842081394401752,
+   "unique_ratio": 0.9185137502103444
+  },
+  "weighted_n5000000": {
+   "share_pct": 46.08643984813704,
+   "unique_ratio": 0.70995975243717
+  },
+  "uniform_n2000000": {
+   "share_pct": 6.6664030273266395,
+   "unique_ratio": 0.9662847525740631
+  },
+  "weighted_n2000000": {
+   "share_pct": 27.41856148022299,
+   "unique_ratio": 0.8427665991992743
+  },
+  "n_compositions": 27,
+  "poisson_max_cluster_per_run": {
+   "mean": 39.5175,
+   "sd": 2.990935263425138,
+   "note": "six most probable composition classes, 2000 replicates"
+  },
+  "max_combo_probability": 5.665630279508322e-06,
+  "max_combo_ratio_to_uniform": 164.2447804731054,
+  "max_combo_expected_count_5e6": 28.32815139754161
+ },
+ "se_uniform": 0.001917336554450038,
+ "diff_uniform_pp": -0.0013059944017541625,
+ "se_weighted": 0.0027135228181175085,
+ "diff_weighted_pp": -0.0006940481370349971
+}

@@ -51,14 +51,14 @@ Bốn cách gán `S` để thử độ bền (`--cach-gan-diem`):
 ## Chạy thử
 
 ```bash
-python -m src.tran_phap_5_tam_ma.run
+python -m src.tran_phap_5_near_miss.run
 ```
 
 Tinh chỉnh:
 ```bash
-python -m src.tran_phap_5_tam_ma.run --beta 2.0 --n-agents 20000
-python -m src.tran_phap_5_tam_ma.run --cach-gan-diem tu_3_so_nhu_nhau --rho 0.995
-python -m src.tran_phap_5_tam_ma.run --no-sweep      # bỏ quét β và lưới độ bền cho nhanh
+python -m src.tran_phap_5_near_miss.run --beta 2.0 --n-agents 20000
+python -m src.tran_phap_5_near_miss.run --cach-gan-diem tu_3_so_nhu_nhau --rho 0.995
+python -m src.tran_phap_5_near_miss.run --no-sweep      # bỏ quét β và lưới độ bền cho nhanh
 ```
 
 Kết quả tại `outputs/tran_phap_5/`: `tam_ma_suyt_trung.png` (tỷ lệ còn chơi, chi-nhận, câu chuyện

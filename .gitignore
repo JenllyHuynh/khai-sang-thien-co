@@ -23,5 +23,10 @@ data/external/*
 # Streamlit
 .streamlit/secrets.toml
 
-# Kết quả mô phỏng (sinh ra khi chạy, không cần commit)
+# Giữ các kết quả mô phỏng và bộ frozen trong repository
 !outputs/
+
+# Local caches and generated paper figures
+.pytest_cache/
+.mplconfig/
+outputs/paper_figures/

@@ -1,0 +1,42 @@
+{
+  "seed": 23,
+  "n_draws": 1560,
+  "window": 52,
+  "n_train_draws": 1357,
+  "n_test_draws": 151,
+  "theoretical_random_matches": 0.6545454545454545,
+  "models": {
+    "Lão Tặc AI (Học Vẹt)": {
+      "train": {
+        "avg_matches": 6.0,
+        "avg_confidence": 1.0,
+        "real_accuracy": 1.0,
+        "ao_tuong_gap": 0.0,
+        "pct_draws_5_or_6_matches": 100.0
+      },
+      "test": {
+        "avg_matches": 0.6556291390728477,
+        "avg_confidence": 1.0,
+        "real_accuracy": 0.10927152317880795,
+        "ao_tuong_gap": 0.890728476821192,
+        "pct_draws_5_or_6_matches": 0.0
+      }
+    },
+    "Đạo Sĩ Khiêm Tốn (Baseline)": {
+      "train": {
+        "avg_matches": 0.6698599852616065,
+        "avg_confidence": 0.11155142722723879,
+        "real_accuracy": 0.11164333087693441,
+        "ao_tuong_gap": -9.190364969562104e-05,
+        "pct_draws_5_or_6_matches": 0.0
+      },
+      "test": {
+        "avg_matches": 0.6490066225165563,
+        "avg_confidence": 0.10979702017866996,
+        "real_accuracy": 0.10816777041942605,
+        "ao_tuong_gap": 0.001629249759243917,
+        "pct_draws_5_or_6_matches": 0.0
+      }
+    }
+  }
+}

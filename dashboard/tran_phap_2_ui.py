@@ -1,9 +1,9 @@
 import streamlit as st
 
 from dashboard.adversary_widget import render_adversary
-from src.tran_phap_2_overfit_ai.simulate import run_simulation
-from src.tran_phap_2_overfit_ai.stats import summarize
-from src.tran_phap_2_overfit_ai.visualize import build_overfitting_figure
+from src.tran_phap_2_overfit.simulate import run_simulation
+from src.tran_phap_2_overfit.stats import summarize
+from src.tran_phap_2_overfit.visualize import build_overfitting_figure
 
 
 def render() -> None:

@@ -1,0 +1,23 @@
+{
+  "n_players_per_group": 2000000,
+  "elapsed_seconds": 9.73,
+  "theoretical_win_probability": 3.449504004442961e-08,
+  "total_combos": 28989675,
+  "vo_vi": {
+    "n_players": 2000000,
+    "n_unique_combos": 1932443,
+    "unique_ratio": 0.9662215,
+    "pct_players_sharing_ticket": 6.67915,
+    "max_cluster_size": 4,
+    "mean_cluster_size_if_shared": 2.0231878350952655
+  },
+  "tinh_cam": {
+    "n_players": 2000000,
+    "n_unique_combos": 1685403,
+    "unique_ratio": 0.8427015,
+    "pct_players_sharing_ticket": 27.41825,
+    "max_cluster_size": 20,
+    "mean_cluster_size_if_shared": 2.3457658875466274
+  },
+  "ty_le_chenh_lech_nguy_co_trung_ve": 4.105050792391247
+}

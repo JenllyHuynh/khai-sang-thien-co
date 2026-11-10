@@ -28,19 +28,19 @@ Vì các lá (leaf) của cây được huấn luyện với `min_samples_leaf=1
 ```bash
 pip install -r requirements.txt
 
-python -m src.tran_phap_2_overfit_ai.run
+python -m src.tran_phap_2_overfit.run
 ```
 
 Tinh chỉnh:
 ```bash
 # Lịch sử ngắn hơn/dài hơn (đơn vị: số lần quay)
-python -m src.tran_phap_2_overfit_ai.run --n-draws 3000
+python -m src.tran_phap_2_overfit.run --n-draws 3000
 
 # Cửa sổ tính tần suất gần đây (mặc định 52 ~ 1 năm nếu quay 1 lần/tuần)
-python -m src.tran_phap_2_overfit_ai.run --window 30
+python -m src.tran_phap_2_overfit.run --window 30
 
 # Tỷ lệ dữ liệu cuối dùng làm "tương lai" kiểm tra
-python -m src.tran_phap_2_overfit_ai.run --test-frac 0.2
+python -m src.tran_phap_2_overfit.run --test-frac 0.2
 ```
 
 Kết quả lưu tại `outputs/tran_phap_2/`:

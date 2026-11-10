@@ -1,15 +1,15 @@
 import numpy as np
 import pandas as pd
 
-from src.tran_phap_2_overfit_ai.data_generator import generate_draw_history
-from src.tran_phap_2_overfit_ai.features import build_feature_table
-from src.tran_phap_2_overfit_ai.overfit_model import (
+from src.tran_phap_2_overfit.data_generator import generate_draw_history
+from src.tran_phap_2_overfit.features import build_feature_table
+from src.tran_phap_2_overfit.overfit_model import (
     predict_top6_per_draw,
     train_dao_si_khiem_ton,
     train_lao_tac_ai,
 )
-from src.tran_phap_2_overfit_ai.simulate import run_simulation
-from src.tran_phap_2_overfit_ai.stats import summarize
+from src.tran_phap_2_overfit.simulate import run_simulation
+from src.tran_phap_2_overfit.stats import summarize
 from src.tran_phap_1_monte_carlo.lottery_config import N_NUMBERS, PICK
 
 def test_generate_draw_history_shape_and_validity():

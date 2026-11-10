@@ -1,0 +1,89 @@
+{
+  "params": {
+    "n_agents": 10000,
+    "beta": 1.0,
+    "seed": 6,
+    "rho": 0.985,
+    "alpha": 0.06,
+    "r_cap": 5.0,
+    "cach_gan_diem": "tuyen_tinh",
+    "h0_mean": 4.5,
+    "h0_std": 0.8,
+    "ngan_sach_median_ve": 40.0,
+    "ngan_sach_sigma": 0.8,
+    "max_ky": 300,
+    "gia_ve": 10000,
+    "bang_thuong": {
+      "3": 50000,
+      "4": 500000,
+      "5": 40000000,
+      "6": 30000000000
+    }
+  },
+  "rtp_ly_thuyet": 0.2380295743225821,
+  "so_sanh": {
+    "so_ky_tb_doi_chung": 18.6343,
+    "so_ky_tb_nhay": 19.0616,
+    "chenh_ky_tb": 0.4273,
+    "chenh_ky_tb_ci95": [
+      0.3788975,
+      0.47900499999999996
+    ],
+    "chenh_ky_tuong_doi_pct": 2.2930831853088125,
+    "ty_le_agent_choi_lau_hon": 0.0446,
+    "ty_le_agent_choi_it_hon": 0.0,
+    "chenh_ky_lon_nhat": 39.0,
+    "chi_tb_doi_chung": 186343.0,
+    "chi_tb_nhay": 190616.0,
+    "chenh_chi_tb": 4273.0,
+    "chenh_chi_tb_ci95": [
+      3798.95,
+      4758.025
+    ],
+    "nhan_tb_doi_chung": 16410.0,
+    "nhan_tb_nhay": 16885.0,
+    "thua_rong_tb_doi_chung": 169933.0,
+    "thua_rong_tb_nhay": 173731.0,
+    "chenh_thua_rong_tb": 3798.0,
+    "ty_le_agent_tung_gap_suyt_trung": 0.2061,
+    "chenh_ky_tb_nhom_tung_gap": 2.0732654051431343,
+    "chenh_ky_tb_nhom_khong_gap": 0.0,
+    "ly_do_dung_doi_chung": {
+      "cham_gioi_han": 0.0,
+      "tu_dung": 0.7971,
+      "het_ngan_sach": 0.2029
+    },
+    "ly_do_dung_nhay": {
+      "cham_gioi_han": 0.0,
+      "tu_dung": 0.7903,
+      "het_ngan_sach": 0.2097
+    }
+  },
+  "con_choi_theo_ky": {
+    "5": {
+      "doi_chung": 0.9287,
+      "nhay": 0.9289
+    },
+    "10": {
+      "doi_chung": 0.7886,
+      "nhay": 0.7905
+    },
+    "20": {
+      "doi_chung": 0.4308,
+      "nhay": 0.4413
+    },
+    "30": {
+      "doi_chung": 0.1598,
+      "nhay": 0.176
+    },
+    "50": {
+      "doi_chung": 0.0036,
+      "nhay": 0.0071
+    },
+    "100": {
+      "doi_chung": 0.0,
+      "nhay": 0.0
+    }
+  },
+  "cau_chuyen_tom_tat": "Agent #180: ngân sách 390,000đ (39 vé), bộ số 14 18 27 30 42 52, hứng thú ban đầu H0 = 4.56. Kỳ 1-12: không có kỳ nào sát nút (12 kỳ trắng thưởng); hứng thú giảm từ 4.56 xuống 3.34. Kỳ 13: quay 14 17 39 40 42 52, trùng 3 số (nhận 50,000đ). Bản đối chứng: H 3.34 -> 3.39. Bản nhạy suýt trúng: H 3.34 -> 3.72. Bản đối chứng dừng sau 23 kỳ (tự dừng); bản nhạy suýt trúng dừng sau 31 kỳ (tự dừng). Cùng ngân sách, cùng bộ số, cùng chuỗi quay, cùng số ngẫu nhiên quyết định. Lưu ý: agent này được chọn vì chênh lệch (8 kỳ) gần trung vị của nhóm bị kéo dài, không phải vì ấn tượng nhất; và nhóm đó chỉ là một phần nhỏ trong quần thể."
+}

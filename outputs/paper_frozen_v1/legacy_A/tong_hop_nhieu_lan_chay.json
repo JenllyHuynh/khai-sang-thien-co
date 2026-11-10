@@ -1,0 +1,21 @@
+{
+  "n_runs": 100,
+  "total_players_simulated_per_group": 500000000,
+  "vo_vi": {
+    "pct_sharing_weighted_mean": 15.8407754,
+    "pct_sharing_std_across_runs": 0.01917336554450038,
+    "pct_sharing_min": 15.79254,
+    "pct_sharing_max": 15.88498,
+    "unique_ratio_weighted_mean": 0.918518804,
+    "max_cluster_size_overall": 7
+  },
+  "tinh_cam": {
+    "pct_sharing_weighted_mean": 46.0857458,
+    "pct_sharing_std_across_runs": 0.027135228181175086,
+    "pct_sharing_min": 46.01954,
+    "pct_sharing_max": 46.15546,
+    "unique_ratio_weighted_mean": 0.709971426,
+    "max_cluster_size_overall": 45
+  },
+  "ty_le_chenh_lech_trung_binh": 2.90931123232768
+}
