@@ -22,3 +22,16 @@ keywords:
   - overfitting
   - agent-based modeling
   - reproducibility
+preferred-citation:
+  type: article
+  title: "Khai Sang Thien Co: A Reproducible Simulation Study of Ticket Concentration, Predictive Overfitting, and Near-Miss Mechanisms in a 6/55 Lottery"
+  authors:
+    - family-names: "Huynh"
+      given-names: "Kim-Hue"
+      orcid: "https://orcid.org/0009-0006-2855-287X"
+  year: 2026
+  month: 11
+  publisher:
+    name: "Zenodo"
+  doi: "10.5281/zenodo.24526868"
+  url: "https://doi.org/10.5281/zenodo.24526868"
