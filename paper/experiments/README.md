@@ -1,5 +1,27 @@
 # Công cụ tái lập bài báo
 
+## Baseline tần suất gần đây bổ sung cho RQ2
+
+```bash
+python paper/experiments/run_recent_frequency.py
+python paper/experiments/make_figures.py --heuristic-data outputs/paper_recent_frequency_v1/B_runs.csv
+```
+
+Heuristic chọn sáu số xuất hiện nhiều nhất trong 52 kỳ trước mỗi mục tiêu test,
+phá hòa bằng số tăng dần. Dùng lại seeds 0–29 và seed 42 riêng, cùng 151 mục
+tiêu test của B; không fit và không gán confidence score. Đây là bổ sung được
+thiết kế sau khi xem kết quả cây, không phải thực nghiệm đăng ký trước.
+
+Kết quả riêng ở `outputs/paper_recent_frequency_v1/`: mean overlap
+0.6620309051, sample SD 0.0621364770, range 0.5496688742–0.8211920530;
+seed 42 là 0.6225165563 và không tính vào aggregate. Kỳ vọng giải tích là
+36/55. Script lưu lựa chọn từng kỳ, CSV theo seed, aggregate, source snapshot
+và manifest có phiên bản môi trường cùng SHA256. Không sửa frozen v1 và từ
+chối ghi đè thư mục đã tồn tại; có thể truyền `--output-dir` mới để tái lập.
+
+Kiểm tra chống rò rỉ và phá hòa:
+`python -m pytest -q tests/test_recent_frequency.py tests/test_tran_phap_2.py`.
+
 Thư mục này chỉ chứa mã Python, cấu hình và dữ liệu xuất cho bài báo.
 Các lệnh dưới đây chạy từ gốc repository; đường dẫn mặc định của script được
 xác định theo vị trí file nên cũng có thể gọi bằng đường dẫn tuyệt đối từ nơi khác.
@@ -16,6 +38,13 @@ Kiểm tra SHA256 của nguồn/cấu hình trong `source_snapshot/`, các kết
 khẳng định mã đang làm việc giống bản lịch sử. Nếu cần so khớp cả đường dẫn
 và nội dung mã hiện tại, thêm `--check-working-tree`; bản đã refactor sẽ
 không khớp bản nguồn cũ và chế độ đó sẽ báo lỗi.
+
+Ghi chú kiểm tra ngày 25/11/2026: checkout hiện tại có 20 mục lệch checksum
+do chuyển kiểu xuống dòng LF/CRLF, nên `--verify-only` chưa đạt kiểm tra byte
+nguyên gốc. Đối chiếu 113 mục nguồn snapshot/kết quả: cả 20 mục đều khớp
+checksum lưu trữ khi đổi lại kiểu xuống dòng, không phát hiện lệch nội dung
+khác. Các file và manifest frozen được giữ nguyên; không diễn giải kiểm tra
+chuẩn hóa xuống dòng thành việc kiểm tra byte nguyên gốc đã đạt.
 
 ## Chạy lại thực nghiệm
 

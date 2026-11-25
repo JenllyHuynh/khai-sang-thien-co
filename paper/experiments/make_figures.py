@@ -45,7 +45,7 @@ def fig_concentration(cfg, data, out):
     fig.savefig(Path(out) / "ticket_concentration.pdf", bbox_inches="tight"); fig.savefig(Path(out) / "ticket_concentration.png", bbox_inches="tight", dpi=300); plt.close(fig)
 
 
-def fig_overfit(data, out):
+def fig_overfit(data, out, heuristic_data=None):
     df = pd.read_csv(Path(data) / "B_runs.csv"); rep = df[df.seed != 42]
     rng = np.random.default_rng(1)
     fig, axes = plt.subplots(1, 3, figsize=(FULLW, 2.85), gridspec_kw={"width_ratios": [1, 1, 1.05]})
@@ -59,6 +59,14 @@ def fig_overfit(data, out):
         ax.set_xticks([0, 1]); ax.set_xticklabels([m[1] for m in models]); ax.set_xlim(-0.6, 1.6); ax.set_title(title); panel(ax, tag)
     axes[0].set_ylabel("Mean overlap with six drawn numbers"); axes[0].set_ylim(0, 6.5); axes[1].set_ylim(0.45, 0.85)
     axes[1].legend(loc="upper left", frameon=False, handlelength=1.6)
+    if heuristic_data is not None:
+        heuristic = pd.read_csv(heuristic_data)
+        y = heuristic[heuristic.seed != 42].test_overlap.to_numpy()
+        ax = axes[1]
+        ax.scatter(2 + rng.uniform(-0.18, 0.18, len(y)), y, s=7, color=GREEN, alpha=0.6, linewidths=0)
+        ax.errorbar(2, y.mean(), yerr=y.std(ddof=1), color="black", marker="_", ms=10, lw=0.9, capsize=2.5, zorder=3)
+        ax.set_xticks([0, 1, 2]); ax.set_xticklabels(["Unrestricted", "Restricted", "Recent\nfrequency"], fontsize=7)
+        ax.set_xlim(-0.6, 2.6)
     ax = axes[2]; w = 0.34; xs = np.arange(2)
     score = [rep[f"{k}_test_score"].mean() for k, _, _ in models]; score_sd = [rep[f"{k}_test_score"].std(ddof=1) for k, _, _ in models]
     hit = [(rep[f"{k}_test_overlap"] / 6).mean() for k, _, _ in models]; hit_sd = [(rep[f"{k}_test_overlap"] / 6).std(ddof=1) for k, _, _ in models]
@@ -112,6 +120,7 @@ if __name__ == "__main__":
     ap.add_argument("--config", type=Path, default=EXPERIMENTS / "frozen_config.json")
     ap.add_argument("--data", type=Path, default=EXPERIMENTS / "paper_data")
     ap.add_argument("--out", type=Path, default=ROOT / "outputs/paper_figures")
+    ap.add_argument("--heuristic-data", type=Path, help="B_runs.csv from run_recent_frequency.py; adds test-only baseline")
     a = ap.parse_args(); cfg = json.loads(a.config.read_text(encoding="utf-8")); a.out.mkdir(parents=True, exist_ok=True)
-    fig_concentration(cfg, a.data, a.out); fig_overfit(a.data, a.out); fig_near_miss(a.data, a.out)
+    fig_concentration(cfg, a.data, a.out); fig_overfit(a.data, a.out, a.heuristic_data); fig_near_miss(a.data, a.out)
     print("wrote", [p.name for p in Path(a.out).glob("*.pdf")])
