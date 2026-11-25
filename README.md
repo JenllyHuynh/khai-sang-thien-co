@@ -2,11 +2,14 @@
 
 # Khai Sang Thien Co
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24526868.svg)](https://doi.org/10.5281/zenodo.24526868)
+
 A reproducible simulation framework for studying ticket concentration,
 predictive overfitting, and near-miss persistence in an idealized fair 6/55
-lottery. This repository accompanies the manuscript *Khai Sang Thien Co:
+lottery. This repository accompanies the preprint [*Khai Sang Thien Co:
 A Reproducible Simulation Study of Ticket Concentration, Predictive
-Overfitting, and Near-Miss Mechanisms in a 6/55 Lottery* by Kim-Hue Huynh.
+Overfitting, and Near-Miss Mechanisms in a 6/55 Lottery*](https://doi.org/10.5281/zenodo.24526868)
+by Kim-Hue Huynh.
 
 The draw law is fixed: every valid six-number combination has the same
 probability. The experiments examine how ticket choices, historical
@@ -70,8 +73,19 @@ checkout. This is a known failure, not a successful integrity check; see the
 
 ## Citation and license
 
-Citation metadata is provided in [`CITATION.cff`](CITATION.cff). No DOI or
-publication venue is asserted for this repository or the manuscript.
+If you reference the manuscript or this simulation framework, please cite the
+Zenodo preprint (also provided in [`CITATION.cff`](CITATION.cff)):
+
+```bibtex
+@misc{huynh2026khaisangthienco,
+  author       = {Huynh, Kim-Hue},
+  title        = {Khai Sang Thien Co: A Reproducible Simulation Study of Ticket Concentration, Predictive Overfitting, and Near-Miss Mechanisms in a 6/55 Lottery},
+  month        = nov,
+  year         = 2026,
+  publisher    = {Zenodo},
+  doi          = {10.5281/zenodo.24526868},
+  url          = {https://doi.org/10.5281/zenodo.24526868}
+```
 
 Released under the [MIT License](LICENSE). The full Vietnamese introduction,
 including its original martial-arts storytelling, is preserved in
