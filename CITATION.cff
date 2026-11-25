@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: "If you use this software or its simulation results, please cite this repository."
+type: software
+title: "Khai Sang Thien Co: Reproducible 6/55 Lottery Simulations"
+authors:
+  - family-names: "Huynh"
+    given-names: "Kim-Hue"
+date-released: "2026-11-25"
+repository-code: "https://github.com/JenllyHuynh/khai-sang-thien-co"
+url: "https://github.com/JenllyHuynh/khai-sang-thien-co"
+license: MIT
+abstract: >-
+  Reproducible simulations of ticket concentration, historical predictive
+  overfitting, and participation under assumed near-miss responses in an
+  idealized fair 6/55 lottery. Includes frozen experiment evidence, source
+  snapshots, and a recent-frequency prediction baseline.
+keywords:
+  - lottery simulation
+  - probability
+  - ticket concentration
+  - weighted sampling without replacement
+  - overfitting
+  - agent-based modeling
+  - reproducibility

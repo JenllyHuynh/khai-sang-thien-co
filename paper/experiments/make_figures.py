@@ -119,7 +119,7 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--config", type=Path, default=EXPERIMENTS / "frozen_config.json")
     ap.add_argument("--data", type=Path, default=EXPERIMENTS / "paper_data")
-    ap.add_argument("--out", type=Path, default=ROOT / "outputs/paper_figures")
+    ap.add_argument("--out", type=Path, default=ROOT / "paper/figures")
     ap.add_argument("--heuristic-data", type=Path, help="B_runs.csv from run_recent_frequency.py; adds test-only baseline")
     a = ap.parse_args(); cfg = json.loads(a.config.read_text(encoding="utf-8")); a.out.mkdir(parents=True, exist_ok=True)
     fig_concentration(cfg, a.data, a.out); fig_overfit(a.data, a.out, a.heuristic_data); fig_near_miss(a.data, a.out)

@@ -64,7 +64,7 @@ python paper/experiments/make_figures.py
 ```
 
 Xuất ba hình, mỗi hình có PDF vector và PNG 300 dpi, vào
-`outputs/paper_figures/` (được Git bỏ qua). Có thể chỉ định `--config`, `--data`
+`paper/figures/`. Có thể chỉ định `--config`, `--data`
 và `--out`. Các PDF thiết kế cho bố cục hai cột, bề rộng khoảng 7,1 inch.
 
 ## Tái xuất dữ liệu và audit phân nhóm
